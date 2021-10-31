@@ -1,0 +1,16 @@
+FROM golang:1.16-alpine
+MAINTAINER Dawei Ma <madawei2699@gmail.com>
+
+ENV PORT=8080
+
+RUN addgroup -g 1001 app && adduser -D -u 1001 -G app app
+
+WORKDIR /app
+
+COPY --chown=app:app ./backend/src/ ./
+RUN go mod download && go build -o /app/bin/run && chown -R app:app /app
+
+EXPOSE 8080
+
+USER app
+CMD ["/app/bin/run"]
