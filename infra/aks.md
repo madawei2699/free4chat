@@ -30,3 +30,7 @@ kubectl create namespace free4chat
 
 mkdir ~/.k9s
 k9s --kubeconfig ~/.kube/config
+
+## Refference Links
+
+- [Deploy to AKS from GitHub Actions | Thomas Stringer](https://trstringer.com/deploy-to-aks-from-github-actions/)
