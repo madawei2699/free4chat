@@ -29,7 +29,7 @@ kubectl create namespace free4chat
 ## k9s
 
 mkdir ~/.k9s
-k9s --kubeconfig ~/.kube/config
+k9s --kubeconfig ~/.kube/k8s-bmpi-kubeconfig.yml
 
 ## Refference Links
 
