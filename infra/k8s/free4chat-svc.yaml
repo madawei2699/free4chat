@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: echo
-        image: ghcr.io/madawei2699/apifree4chat:latest
+        image: <IMAGE>
         resources:
           requests:
             memory: "128Mi"

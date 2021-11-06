@@ -31,13 +31,16 @@ jobs:
     
     # Build a Docker image of your application in your registry and tag the image with the $GITHUB_SHA.
     - name: Build container image
-      run: docker build -t ghcr.io/madawei2699/apifree4chat:latest -f ./infra/Dockerfile.backend .
+      run: docker build -t ghcr.io/madawei2699/apifree4chat:$(echo $GITHUB_SHA | head -c7) -f ./infra/Dockerfile.backend .
 
     - name: Log in to GitHub Packages
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
     - name: Push image to GitHub Packages
-      run: docker push ghcr.io/madawei2699/apifree4chat:latest
+      run: docker push ghcr.io/madawei2699/apifree4chat:$(echo $GITHUB_SHA | head -c7)
+
+    - name: Update deployment file
+      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|ghcr.io/madawei2699/apifree4chat:'${TAG}'|' $GITHUB_WORKSPACE/infra/k8s/free4chat-svc.yaml
 
     - name: Save DigitalOcean kubeconfig with short-lived credentials
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
