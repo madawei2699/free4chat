@@ -33,8 +33,8 @@ jobs:
     - name: Build container image
       run: docker build -t ghcr.io/madawei2699/apifree4chat:latest -f ./infra/Dockerfile.backend .
 
-    - name: Log in to DigitalOcean Container Registry with short-lived credentials
-      run: doctl registry login --expiry-seconds 1200
+    - name: Log in to GitHub Packages
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
     - name: Push image to GitHub Packages
       run: docker push ghcr.io/madawei2699/apifree4chat:latest
