@@ -43,7 +43,7 @@ jobs:
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
 
     - name: Deploy to DigitalOcean Kubernetes
-      run: kubectl apply -f $GITHUB_WORKSPACE/infra/k8s/free4chat-svc.yml -n free4chat
+      run: kubectl apply -f $GITHUB_WORKSPACE/infra/k8s/free4chat-svc.yaml -n free4chat
 
     - name: Verify deployment
       run: kubectl rollout status deployment/apifree4chat -n free4chat
