@@ -1,0 +1,49 @@
+name: DO_K8S_Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/src/**'
+      - 'infra/Dockerfile.backend'
+      - '.github/workflows/**'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel.
+jobs:
+  # This workflow contains a single job called "build".
+  build:
+    # The type of runner that the job will run on.
+    runs-on: ubuntu-latest
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it.
+    - name: Checkout master
+      uses: actions/checkout@main
+
+    # Install doctl.
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    
+    # Build a Docker image of your application in your registry and tag the image with the $GITHUB_SHA.
+    - name: Build container image
+      run: docker build -t ghcr.io/madawei2699/apifree4chat:latest .
+
+    - name: Log in to DigitalOcean Container Registry with short-lived credentials
+      run: doctl registry login --expiry-seconds 1200
+
+    - name: Push image to GitHub Packages
+      run: docker push ghcr.io/madawei2699/apifree4chat:latest
+
+    - name: Save DigitalOcean kubeconfig with short-lived credentials
+      run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
+
+    - name: Deploy to DigitalOcean Kubernetes
+      run: kubectl apply -f $GITHUB_WORKSPACE/infra/k8s/free4chat-svc.yml -n free4chat
+
+    - name: Verify deployment
+      run: kubectl rollout status deployment/apifree4chat -n free4chat

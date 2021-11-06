@@ -18,6 +18,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: echo
+            name: apifree4chat
             port:
               number: 80

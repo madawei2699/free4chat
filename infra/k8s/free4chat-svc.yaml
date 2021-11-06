@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apifree4chat
+spec:
+  ports:
+  - port: 80
+    targetPort: 8888
+  selector:
+    app: apifree4chat
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apifree4chat
+spec:
+  selector:
+    matchLabels:
+      app: apifree4chat
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: apifree4chat
+    spec:
+      containers:
+      - name: echo
+        image: ghcr.io/madawei2699/apifree4chat:latest
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "500Mi"
+            cpu: "1000m"
+        ports:
+        - containerPort: 8888
