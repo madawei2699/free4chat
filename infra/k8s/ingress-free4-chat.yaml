@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - api.free4.chat
+    - api.k.free4.chat
     secretName: api-free4chat-tls
   rules:
-  - host: "api.free4.chat"
+  - host: "api.k.free4.chat"
     http:
       paths:
       - pathType: Prefix

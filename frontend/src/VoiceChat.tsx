@@ -303,7 +303,7 @@ export const Conference = () => {
   const refTransport = useRef<WebSocketTransport>();
   if (!refTransport.current) {
     refTransport.current = new WebSocketTransport(
-      `wss://api.free4.chat/${window.location.pathname.replace("/", "")}`
+      `wss://api.k.free4.chat/${window.location.pathname.replace("/", "")}`
     );
   }
   const transport = refTransport.current;
