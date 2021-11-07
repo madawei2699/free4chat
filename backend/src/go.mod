@@ -5,6 +5,7 @@ go 1.12
 require (
 	github.com/gorilla/mux v1.7.4
 	github.com/gorilla/websocket v1.4.2
+	github.com/pion/rtp v1.6.1
 	github.com/pion/srtp v1.5.2 // indirect
 	github.com/pion/webrtc/v2 v2.2.3
 	github.com/youpy/go-riff v0.0.0-20131220112943-557d78c11efb // indirect
