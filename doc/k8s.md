@@ -71,3 +71,9 @@ kubectl apply -f production_issuer.yaml
 kubectl get nodes
 ./nsenter-node.sh node-id-xxx
 netstat -pan | grep :443
+
+### Enabling Pod Communication through the Load Balancer (optional)
+
+kubectl apply -f ingress_nginx_svc.yaml
+
+https://cert-manager.io/docs/faq/troubleshooting/
