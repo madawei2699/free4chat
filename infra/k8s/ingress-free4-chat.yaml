@@ -21,3 +21,11 @@ spec:
             name: apifree4chat
             port:
               number: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: apifree4chat
+spec:
+  type: ExternalName
+  externalName: apifree4chat.free4chat.svc.cluster.local
