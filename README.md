@@ -7,9 +7,9 @@
 ## TODO
 
 - [ ] Backend service
-    - [] webrtc upgrade to v3
+    - [ ] webrtc upgrade to v3
 - [ ] Frontend
-    - [] refactor
+    - [ ] refactor
 - [ ] Infrastructure
     - [x] backend service dockerfile
     - [x] gitHub workflow
