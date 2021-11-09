@@ -12,7 +12,7 @@
     - [ ] refactor
 - [ ] Infrastructure
     - [x] backend service dockerfile
-    - [x] gitHub workflow
+    - [x] github workflow
     - [x] k8s
     - [ ] logging([stern](https://github.com/wercker/stern))
     - [ ] monitoring and alerting([New Relic](https://newrelic.com/))
