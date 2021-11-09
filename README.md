@@ -6,14 +6,14 @@
 
 ## TODO
 
-- [] Backend service
+- [ ] Backend service
     - [] webrtc upgrade to v3
-- [] Frontend
+- [ ] Frontend
     - [] refactor
-- [] Infrastructure
+- [ ] Infrastructure
     - [x] backend service dockerfile
     - [x] gitHub workflow
     - [x] k8s
-    - [] logging([stern](https://github.com/wercker/stern))
-    - [] monitoring and alerting([New Relic](https://newrelic.com/))
-    - [] error tracking([Sentry](https://sentry.io/welcome/))
+    - [ ] logging([stern](https://github.com/wercker/stern))
+    - [ ] monitoring and alerting([New Relic](https://newrelic.com/))
+    - [ ] error tracking([Sentry](https://sentry.io/welcome/))
