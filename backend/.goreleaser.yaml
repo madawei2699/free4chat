@@ -3,7 +3,7 @@
 before:
   hooks:
     # You may remove this if you don't use go modules.
-    - go mod tidy -e
+    - go mod tidy -go=1.17
     # you may remove this if you don't need go generate
     - go generate ./...
 builds:
