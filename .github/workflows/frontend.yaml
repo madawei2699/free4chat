@@ -3,7 +3,8 @@ name: Build Frontend Static Site
 on:
   create:
     tags:
-    - v*-f
+    - v*.*.*-f
+
 jobs:
   build:
     runs-on: ubuntu-latest
