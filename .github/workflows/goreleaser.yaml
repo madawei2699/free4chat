@@ -4,10 +4,6 @@ on:
   pull_request:
   push:
 
-defaults:
-  run:
-    working-directory: backend
-
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
@@ -30,6 +26,7 @@ jobs:
           distribution: goreleaser
           version: latest
           args: release --rm-dist
+          workdir: ./backend
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Your GoReleaser Pro key, if you are using the 'goreleaser-pro' distribution
