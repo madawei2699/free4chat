@@ -14,10 +14,10 @@ jobs:
         with:
           node-version: '10.15.3'
       - run: cd ./frontend && yarn && yarn generate
-      
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
