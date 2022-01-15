@@ -5,7 +5,7 @@ upstream free4chat {
 server {
     listen 80;
 
-    server_name a.rpc.free4.chat;
+    server_name rpc.free4.chat;
 
     location / {
         proxy_pass http://free4chat;

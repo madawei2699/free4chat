@@ -1,4 +1,4 @@
-name: Build Frontend Static Site
+name: Frontend Site Build Job
 
 on:
   push:

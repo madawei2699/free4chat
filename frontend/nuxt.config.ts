@@ -96,7 +96,7 @@ const config: Configuration = {
   },
   env: {
     TOKEN: process.env.TOKEN || '',
-    API_BASE: process.env.API_BASE || 'https://a.rpc.free4.chat',
+    API_BASE: process.env.API_BASE || 'https://rpc.free4.chat',
     APP_ENV: process.env.APP_ENV || ''
   }
 }

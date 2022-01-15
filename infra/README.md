@@ -8,8 +8,17 @@ Server type: 1 GB RAM, 1 vCPU, 40 GB SSD
 
 ### cloudflare
 
-- create DNS A/CNAME record for the domain `free4.chat` and point it to `vercel` DNS server.
-  - Frontend static content is served from `vercel` CDN.
+- DNS
+  - create `A` record named `rpc` pointing to the server address.
+  - create `CNAME` record to point to cloudflare Pages domain.
+- CDN
+  - config github to use cloudflare CDN to deploy the frontend site.
+
+![](https://img.bmpi.dev/e9ad1eca-6c7a-9e9d-5f8b-baa4ddf4fb96.png)
+
+And it's better to create a redirect rule for `www.free4.chat` to `free4.chat`, we can use cloudflare's Page Rules feature.
+
+![](https://img.bmpi.dev/83a1388a-634b-c054-f950-be4218158733.png)
 
 ### ~~certbot(replaced by cloudflare proxy)~~
 
