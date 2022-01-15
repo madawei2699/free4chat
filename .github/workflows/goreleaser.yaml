@@ -3,7 +3,7 @@ name: goreleaser
 on:
   create:
     tags:
-    - v*
+    - v_b_*
 
 jobs:
   goreleaser:
