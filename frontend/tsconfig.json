@@ -1,25 +1,37 @@
 {
-  "include": [
-    "./src/*"
-  ],
   "compilerOptions": {
-    "strict": true,
-    "lib": [
-      "dom",
-      "esnext",
-      "es2016"
-    ],
-    "jsx": "react",
-    "target": "ES2016",
-    "module": "ESNext",
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
+    "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "node",
+    "lib": [
+      "esnext",
+      "esnext.asynciterable",
+      "dom"
+    ],
+    "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true
-  }
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "src/*"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "types": [
+      "nuxt-i18n",
+      "@types/node",
+      "@nuxt/types",
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

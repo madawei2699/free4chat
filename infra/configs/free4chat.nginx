@@ -1,0 +1,13 @@
+upstream free4chat {
+  server 127.0.0.1:7000 weight=100 max_fails=5 fail_timeout=5;
+}
+
+server {
+    listen 80;
+
+    server_name a.rpc.free4.chat;
+
+    location / {
+        proxy_pass http://free4chat;
+    }
+}

@@ -1,0 +1,13 @@
+.v-application {
+  font-family: SF UI Display, Helvetica, Arial, ubuntu, sans-serif !important;
+  font-size: 16px;
+}
+
+.theme--dark.v-application {
+  background-color: #111;
+  background: linear-gradient(180deg, #111 0%, #282828 100%) !important;
+}
+
+.theme--dark.v-text-field--solo > .v-input__control > .v-input__slot {
+  background: rgba(255, 255, 255, 0.1) !important;
+}

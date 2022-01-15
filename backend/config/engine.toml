@@ -1,0 +1,17 @@
+[engine]
+# the network interface to bind
+interface = "eth0"
+# the IP address to bind, empty allows the engine to get it from interface
+address = "127.0.0.1"
+log-level = 10
+# the UDP port range, leave them to 0 for default strategy
+port-min = 0
+port-max = 0
+
+[turn]
+host = "turn:13.214.210.176:443"
+# must be identical to coturn static auth secret
+secret = "replace-it-with-your-secret"
+
+[rpc]
+port = 7000

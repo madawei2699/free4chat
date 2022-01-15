@@ -1,0 +1,24 @@
+html, body, #__nuxt, #__layout {
+  margin: 0;
+  // height: 100%;
+  // width: 100%;
+  z-index: 1;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+span, div, p, a {
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  outline: none!important;
+  -webkit-tap-highlight-color: transparent;
+}

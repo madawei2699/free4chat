@@ -1,0 +1,13 @@
+[Unit]
+Description=Free4Chat Daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Type=simple
+ExecStart=/home/ubuntu/free4.chat/app -c /home/ubuntu/free4.chat/engine.toml -s engine
+Restart=on-failure
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
