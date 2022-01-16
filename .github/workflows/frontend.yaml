@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '10.15.3'
-      - run: cd ./frontend && sh ./env.sh && yarn && yarn generate && mv dist ../
+      - run: cd ./frontend && yarn && yarn generate && mv dist ../
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

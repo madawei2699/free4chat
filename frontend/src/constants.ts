@@ -1,4 +1,4 @@
-export const isProduct = process.env.APP_ENV === 'prod'
+export const isProduct = true
 
 export const GA = 'UA-217339264-1'
 
