@@ -123,3 +123,10 @@ Reload nginx:
 sudo nginx -t
 sudo systemctl reload nginx
 ```
+
+## FAQ
+
+- [Coturn to Backend communication](https://github.com/MixinNetwork/kraken/issues/11)
+  - The communication flow is `Nginx -> Backend(free4chat) -> Coturn`, so nginx, backend and coturn need bind to same ip or ip in same sub-network that can make the communication work, currently these services all bind to private ip of the server which is `172.26.5.77`.
+- SFU Architecture
+  - [Peer and Track](https://excalidraw.com/#json=2AAmNFc0WMiDurA5ejiB4,Hjs5fMMQh5ollETmhfgWWw)
