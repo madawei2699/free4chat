@@ -58,23 +58,6 @@
           </div>
         </template>
       </template>
-      <div class="faq px-4">
-        <div class="faq-title display-1 mt-4 py-4">{{ $t('index.faq_title') }}</div>
-        <div
-          v-for="item in faqItems"
-          :key="item.q"
-          class="faq-item"
-        >
-          <div class="question font-weight-bold" v-html="item.q"></div>
-          <div class="anwser" v-html="item.a"></div>
-        </div>
-      </div>
-      <div class="footer">
-        <div class="twitter">
-          © Mornin 2020<br>
-          Follow <a href="https://twitter.com/MorninFM">@MorninFM</a> to contact us.
-        </div>
-      </div>
     </v-container>
   </normal-page-layout>
 </template>
@@ -117,7 +100,7 @@ class IndexPage extends Mixins(PageView) {
   faqItems:any = []
 
   get title () {
-    return 'Mornin'
+    return 'free4.chat'
   }
 
   get cardWidth () {
@@ -155,7 +138,7 @@ class IndexPage extends Mixins(PageView) {
   reload () {
     this.setAppbar({
       color: 'rgba(0,0,0,0.0)',
-      title: 'Mornin',
+      title: 'free4.chat',
       animation: true,
       back: false
     })

@@ -12,15 +12,15 @@
     "create_room_dialog_btn": "Unirse",
     "create_room_btn": "Crear una habitación",
     "recent_room_label": "Habitaciones recientes",
-    "headline_1": "Mornin es un servicio de audioconferencia anónimo.",
+    "headline_1": "free4.chat es un servicio de audioconferencia anónimo.",
     "headline_2": "Habla con tus amigos sin instalar la aplicación"
   },
 
   "room": {
     "empty_block_title": "Hey, estas solo.",
     "empty_block_text": " 🎉 comparte la página con amigos y espera a que se unan 🎉",
-    "error_block_title": "Mornin necesita permiso de micrófono",
-    "error_block_text": " 🎤Mornin necesita permiso de micrófono para funcionar correctamente, permita que use su micrófono.🎤",
+    "error_block_title": "free4.chat necesita permiso de micrófono",
+    "error_block_text": " 🎤free4.chat necesita permiso de micrófono para funcionar correctamente, permita que use su micrófono.🎤",
     "name_dialog_title": "Tu nombre",
     "name_dialog_placeholder": "Cuál es tu apodo",
     "name_dialog_btn": "Bueno"
