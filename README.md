@@ -15,6 +15,7 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
   - [ ] User real-time collaboration, like whiteboard
 - Infra
   - [ ] Backend service cluster, auto scaling, load balancing, etc.
+  - [ ] Security enhancement, like coturn TLS setup, end-to-end encryption, etc.
 
 ## Contribution
 
