@@ -19,4 +19,4 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 
 ## Contribution
 
-If you are interested in `webRTC`, `peer-to-peer(P2P)`, `real-time collaboration(CRDT`, `distributed system` or `robot design`, you can join this project and contact with me by [twitter](https://twitter.com/madawei2699).
+If you are interested in `webRTC`, `peer-to-peer(P2P)`, `real-time collaboration(CRDT)`, `distributed system` or `robot design`, you can join this project and contact with me by [twitter](https://twitter.com/madawei2699).
