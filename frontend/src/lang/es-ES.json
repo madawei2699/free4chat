@@ -7,7 +7,7 @@
 
   "index": {
     "create_room_dialog_title": "Crea o únete a una sala",
-    "create_room_dialog_hint_1": "<span class='domain'>https://mornin.fm/</span><span class='font-weight-bold'>ROOM-ID</span> indica una conferencia de audio en <span class='font-weight-bold'>ROOM-ID</span>",
+    "create_room_dialog_hint_1": "<span class='domain'>https://free4.chat/</span><span class='font-weight-bold'>ROOM-ID</span> indica una conferencia de audio en <span class='font-weight-bold'>ROOM-ID</span>",
     "create_room_dialog_hint_2": "<span class='font-weight-bold'>ROOM-ID</span> pueden ser alfabetos o números, una palabra simple es buena para una habitación pública, una cadena aleatoria es buena para una habitación privada.",
     "create_room_dialog_btn": "Unirse",
     "create_room_btn": "Crear una habitación",

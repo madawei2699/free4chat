@@ -7,7 +7,7 @@
 
   "index": {
     "create_room_dialog_title": "創建或加入房間",
-    "create_room_dialog_hint_1": "房間 #<span class='font-weight-bold'>ROOM-ID</span> 的訪問地址是 <span class='domain'>https://mornin.fm/</span><span class='font-weight-bold'>ROOM-ID</span>。",
+    "create_room_dialog_hint_1": "房間 #<span class='font-weight-bold'>ROOM-ID</span> 的訪問地址是 <span class='domain'>https://free4.chat/</span><span class='font-weight-bold'>ROOM-ID</span>。",
     "create_room_dialog_hint_2": "房間名 #<span class='font-weight-bold'>ROOM-ID</span> 可以是數字和字母。公開房間可以用簡單的單詞作為名字，私有的房間可以用隨機的單詞作為名字",
     "create_room_dialog_btn": "加入",
     "create_room_btn": "創建自己的房間",

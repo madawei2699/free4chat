@@ -9,7 +9,7 @@
   "index": {
     "faq_title": "常见问题",
     "create_room_dialog_title": "创建或加入房间",
-    "create_room_dialog_hint_1": "房间 #<span class='font-weight-bold'>ROOM-ID</span> 的访问地址是 <span class='domain'>https://mornin.fm/</span><span class='font-weight-bold'>ROOM-ID</span>。",
+    "create_room_dialog_hint_1": "房间 #<span class='font-weight-bold'>ROOM-ID</span> 的访问地址是 <span class='domain'>https://free4.chat/</span><span class='font-weight-bold'>ROOM-ID</span>。",
     "create_room_dialog_hint_2": "房间名 #<span class='font-weight-bold'>ROOM-ID</span> 可以是数字和字母。公开房间可以用简单的单词作为名字，私有的房间可以用随机的单词作为名字。",
     "create_room_dialog_btn": "加入",
     "create_room_btn": "加入房间",
