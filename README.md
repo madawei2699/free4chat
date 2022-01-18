@@ -20,3 +20,7 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 ## Contribution
 
 If you are interested in `webRTC`, `peer-to-peer(P2P)`, `real-time collaboration(CRDT)`, `distributed system` or `robot design`, you can join this project and contact with me by [twitter](https://twitter.com/madawei2699).
+
+## Thanks
+
+free4.chat is build on the top of [kraken](https://github.com/bmpi-dev/kraken) and [Mornin](https://github.com/lyricat/mornin.fm), thanks for their heart of open source.
