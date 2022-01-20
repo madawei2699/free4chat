@@ -13,7 +13,7 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 - User
   - [ ] Robot user, like game robot who can play or facilitate game
     - robot use [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) to play with user in room
-    - robot can play some games like language learning, technical interview, etc.
+    - robot can play some voice games like language learning, technical interview, etc.
   - [ ] User real-time collaboration, like whiteboard, you draw I guess, etc.
 - Infra
   - [ ] Backend service cluster, auto scaling, load balancing, etc.
