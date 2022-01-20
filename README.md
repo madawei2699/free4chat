@@ -12,10 +12,13 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
   - [ ] Public rooms discovery, like hot room list or filter rooms by type/tag
 - User
   - [ ] Robot user, like game robot who can play or facilitate game
-  - [ ] User real-time collaboration, like whiteboard
+    - robot use [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) to play with user in room
+    - robot can play some games like language learning, technical interview, etc.
+  - [ ] User real-time collaboration, like whiteboard, you draw I guess, etc.
 - Infra
   - [ ] Backend service cluster, auto scaling, load balancing, etc.
   - [ ] Security enhancement, like coturn TLS setup, end-to-end encryption, etc.
+  - [ ] Privacy enhancement.
 
 ## Contribution
 
