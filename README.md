@@ -6,6 +6,8 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 
 ## Features
 
+- Common
+  - [ ] Use web socket to replace http-json protocol
 - Room
   - [ ] Text chat, can sent text or emoji
   - [ ] Room permission setting, like public/private type setting
