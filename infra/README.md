@@ -124,6 +124,15 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
+## Log Analytics
+
+Use [logz](https://logz.io) to analyze the logs.
+
+- Filebeat: [General guide to shipping logs with Filebeat
+](https://docs.logz.io/shipping/log-sources/filebeat.html)
+  - `/etc/filebeat/filebeat.yml` must be owned by `root`.
+  - it needs check whether cert path in `/etc/filebeat/filebeat.yml` is ok, otherwise it will fail.
+
 ## FAQ
 
 - [Coturn to Backend communication](https://github.com/MixinNetwork/kraken/issues/11)
