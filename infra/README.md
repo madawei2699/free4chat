@@ -126,12 +126,32 @@ sudo systemctl reload nginx
 
 ## Log Analytics
 
+### [logz](https://logz.io)
+
 Use [logz](https://logz.io) to analyze the logs.
 
 - Filebeat: [General guide to shipping logs with Filebeat
 ](https://docs.logz.io/shipping/log-sources/filebeat.html)
   - `/etc/filebeat/filebeat.yml` must be owned by `root`.
   - it needs check whether cert path in `/etc/filebeat/filebeat.yml` is ok, otherwise it will fail.
+
+![](https://img.bmpi.dev/56c73feb-f186-2621-b207-da5e91a9fc6d.png)
+
+### [grafana](https://bmpi.grafana.net/)
+
+#### Server
+
+- Install [Grafana Agent for Linux Server](https://bmpi.grafana.net/a/grafana-easystart-app/linux-node)
+
+![](https://img.bmpi.dev/6a70a42f-d8e5-4fe7-9761-7324b532bc9e.png)
+
+#### Nginx
+
+- First, install [Grafana Agent for Nginx](https://bmpi.grafana.net/a/grafana-easystart-app/nginx), guide refer this [NGINX Integration for Grafana Cloud
+](https://grafana.com/docs/grafana-cloud/integrations/integrations/integration-nginx/)
+- [nginx v1.18.0 add GeoIP2 module on ubuntu 20](https://gist.github.com/madawei2699/7f2e8785bd0107df0a7b2f7647072785)
+
+![](https://img.bmpi.dev/db820c07-45d5-d313-a281-36d2590925c4.png)
 
 ## FAQ
 
