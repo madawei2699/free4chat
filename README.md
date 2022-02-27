@@ -7,7 +7,7 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 ## Features
 
 - **Common**
-  - [ ] Use [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to replace http-json protocol
+  - [ ] Use [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to replace http protocol of JSON-RPC
 - **Room**
   - [ ] Text chat, can sent text or emoji
   - [ ] Room permission setting, like public/private type setting
