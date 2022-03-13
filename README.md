@@ -34,3 +34,9 @@ If you are interested in `webRTC`, `peer-to-peer(P2P)`, `real-time collaboration
 ## Thanks
 
 free4.chat is build on the top of [Kraken](https://github.com/bmpi-dev/kraken), [Mornin](https://github.com/lyricat/mornin.fm), [coturn](https://github.com/coturn/coturn) and [Pion](https://github.com/pion), thanks for their heart of open source.
+
+These websites also inspired me:
+
+- [Random voice and text chat rooms that you’ll love. | Speakrandom](https://www.speakrandom.com/)
+- [Practice Speaking English Online Free - Language Practice Community](https://www.free4talk.com/)
+- [Agora Real-Time Voice and Video Engagement](https://www.agora.io/en/)
