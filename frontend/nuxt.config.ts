@@ -11,6 +11,9 @@ const config: Configuration = {
   head: {
     titleTemplate: '%s',
     title: 'free4.chat',
+    script: [
+      { hid: 'umami', src: 'https://umami.bmpi.dev/umami.js', defer: true, async: true, 'data-website-id': '456d3289-e627-409c-a9d7-a272cf789f0b' }
+    ],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no' },
