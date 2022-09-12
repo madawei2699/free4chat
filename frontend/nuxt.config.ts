@@ -12,7 +12,7 @@ const config: Configuration = {
     titleTemplate: '%s',
     title: 'free4.chat',
     script: [
-      { hid: 'umami', src: 'https://umami.bmpi.dev/umami.js', defer: true, async: true, 'data-website-id': '456d3289-e627-409c-a9d7-a272cf789f0b' }
+      { hid: 'umami', src: 'https://umami.bmpi.dev/umami.js', defer: true, async: true, 'data-website-id': '556d3289-e627-409c-a9d7-a272cf789f0b' }
     ],
     meta: [
       { charset: 'utf-8' },
