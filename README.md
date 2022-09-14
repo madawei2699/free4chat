@@ -26,6 +26,7 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
       - [Gartic.io - Draw, Guess, WIN](https://gartic.io/)
   - [ ] User real-time collaboration, like whiteboard, you draw I guess, etc.
 - **Infra**
+  - [ ] Use docker to deploy to PaaS platform like [Railway](https://railway.app/) or [Fly](https://fly.io/) 🚩
   - [ ] Backend service cluster, auto scaling, load balancing, etc.
   - [ ] Security enhancement, like coturn TLS setup, end-to-end encryption, etc.
   - [ ] Privacy enhancement.
