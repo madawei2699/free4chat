@@ -25,8 +25,12 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
       - [ESL Game - Not only practicing English speaking](https://esl.bmpi.dev/)
       - [Gartic.io - Draw, Guess, WIN](https://gartic.io/)
   - [ ] User real-time collaboration, like whiteboard, you draw I guess, etc.
+  
+## Architecture
+- **Tech Stack**
+  - [ ] Use Elixir/Phoenix to rewrite the core code 🚩
 - **Infra**
-  - [ ] Use docker to deploy to PaaS platform like [Railway](https://railway.app/) or [Fly](https://fly.io/) 🚩
+  - [ ] Use docker to deploy to PaaS platform like [Railway](https://railway.app/) or [Fly](https://fly.io/)
   - [ ] Backend service cluster, auto scaling, load balancing, etc.
   - [ ] Security enhancement, like coturn TLS setup, end-to-end encryption, etc.
   - [ ] Privacy enhancement.
