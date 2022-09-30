@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Next.js advanced start template.</title>
+        <title>Free4Chat</title>
 
         <meta
           name="description"
