@@ -1,0 +1,11 @@
+version: "3"
+services:
+  free4chat:
+    image: free4chat:${TAG:-latest}
+    network_mode: "host"
+    environment:
+      VIRTUAL_HOST: "${VIRTUAL_HOST:-localhost}"
+      USE_INTEGRATED_TURN: "true"
+      INTEGRATED_TURN_IP: "${INTEGRATED_TURN_IP:-127.0.0.1}"
+      INTEGRATED_TURN_PORT_RANGE: "50000-65355"
+      INTEGRATED_TCP_TURN_PORT: "49999"

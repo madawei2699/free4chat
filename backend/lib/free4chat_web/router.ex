@@ -7,6 +7,10 @@ defmodule Free4chatWeb.Router do
 
   scope "/api", Free4chatWeb do
     pipe_through :api
+
+    get("/room/:room_id/stats", RoomController, :scrape)
+
+    get("/healthcheck", PageController, :healthcheck)
   end
 
   # Enables LiveDashboard only for development

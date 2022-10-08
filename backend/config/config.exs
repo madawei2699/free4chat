@@ -22,6 +22,21 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :logger,
+  compile_time_purge_matching: [
+    [level_lower_than: :info],
+    # Silence irrelevant warnings caused by resending handshake events
+    [module: Membrane.SRTP.Encryptor, function: "handle_event/4", level_lower_than: :error]
+  ]
+
+telemetry_enabled = true
+
+config :membrane_telemetry_metrics, enabled: telemetry_enabled
+
+config :membrane_opentelemetry, enabled: telemetry_enabled
+
+config :logger, :console, metadata: [:room, :peer]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
