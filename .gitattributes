@@ -1,0 +1,2 @@
+*.ex linguist-language=elixir
+*.tsx linguist-language=typescript
