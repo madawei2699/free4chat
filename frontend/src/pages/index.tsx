@@ -1,141 +1,131 @@
-import React from "react"
+import { useState } from "react"
 
-import Head from "next/head"
-import Link from "next/link"
+import { useRouter } from "next/router"
+
+import { randomName, saveRoomToLocalStorage } from "../common/utils"
+import Header from "../components/Header"
 
 export default function Home() {
+  const router = useRouter()
+  const [roomName, setRoomName] = useState<string>("")
+  const [nickName, setNickName] = useState<string>("")
+  const go = () => {
+    if (roomName !== "" && nickName != "") {
+      if (typeof window !== "undefined") {
+        saveRoomToLocalStorage(roomName, nickName)
+      }
+      router.push("/room?id=" + roomName)
+    }
+  }
+
   return (
     <div>
-      <Head>
-        <title>Free4Chat</title>
+      <Header></Header>
+      <main className="bg-gray-900 text-white">
+        <div className="mx-auto h-screen max-w-screen-xl px-4 py-32 lg:flex lg:items-center">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+              Free for Chat
+            </h1>
 
-        <meta
-          name="description"
-          content="Use tailwind css, eslint, prettier & absolute imports instantly.
-            Easily extendable zero-config template for pros and beginners."
-        />
+            <p className="mx-auto mt-4 text-gray-600 sm:text-sm sm:leading-relaxed">
+              There is freedom of speech, but I cannot guarantee freedom after
+              speech. (Idi Amin)
+            </p>
 
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+            <div className="mx-auto mt-8 max-w-xl sm:flex sm:gap-4">
+              <div className="relative">
+                <label htmlFor="room" className="sr-only">
+                  Room
+                </label>
 
-      <main className="flex min-h-screen justify-center bg-gradient-to-b from-gray-50 via-gray-50 to-gray-100 py-20">
-        <div>
-          <h1 className="px-5 text-center text-4xl font-bold leading-tight tracking-tight sm:mt-4 sm:text-6xl">
-            Next.js
-            <br />
-            Advanced Starter
-          </h1>
+                <input
+                  type="input"
+                  id="room"
+                  placeholder="Room Name"
+                  value={roomName}
+                  onChange={(e) => setRoomName(e.target.value)}
+                  className="w-full rounded-md border-gray-200 bg-white p-3 text-gray-700 shadow-sm transition focus:border-white focus:outline-none focus:ring focus:ring-yellow-400"
+                />
 
-          <h2 className="mx-auto mt-8 max-w-4xl px-10 text-center text-base tracking-tight text-gray-600 sm:text-2xl md:mt-5 md:text-2xl">
-            Tailwind CSS 3.0, ESLint & Prettier without a single line of config!
-            Easily extendable zero-config template for pros and beginners.
-          </h2>
-
-          <div className="px-4 sm:px-0">
-            <section
-              className="mt-6 grid min-h-[350px] w-full grid-cols-1 rounded-lg bg-white sm:mt-20 sm:min-w-[1000px] sm:grid-cols-2"
-              style={{
-                boxShadow: "rgba(0, 0, 0, 0.12) 0px 30px 60px 0px",
-              }}
-            >
-              <div className="flex flex-col justify-center rounded-l-lg bg-gray-50">
-                <FeatureList>
-                  <Feature main="Tailwind CSS">
-                    Fast design workflow with <InfoText text="Tailwind CSS" />
-                  </Feature>
-
-                  <Feature main="TypeScript">
-                    <InfoText text="TypeScript" /> by default
-                  </Feature>
-
-                  <Feature main="ESLint config">
-                    Customizable <InfoText text="ESLint config" />
-                  </Feature>
-
-                  <Feature main="Code formatting">
-                    <InfoText text="Code formatting" /> with Prettier
-                  </Feature>
-
-                  <Feature main="Absolute imports">
-                    Standardized <InfoText text="absolute imports" />
-                  </Feature>
-
-                  <Feature main="Absolute imports">
-                    Ready-to-go <InfoText text="Jest" /> setup
-                  </Feature>
-                </FeatureList>
-              </div>
-
-              <div className="space-y-5 place-self-center px-4 py-24 text-center">
-                <h3 className="text-3xl font-bold">Get it 👇</h3>
-
-                <span className="inline-flex rounded-md shadow-sm">
-                  <Link href="https://github.com/agcty/nextjs-advanced-starter">
-                    <a
-                      type="button"
-                      className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-4 font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:border-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-400 active:bg-blue-700 sm:px-10"
+                <span className="absolute inset-y-0 right-0 grid w-10 place-content-center">
+                  <button
+                    onClick={() => setRoomName(randomName())}
+                    type="button"
+                    className="text-black hover:bg-red-400"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      className="h-4 w-4"
                     >
-                      Copy Template from GitHub
-                    </a>
-                  </Link>
+                      <path d="M13 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h10zM3 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3H3z" />{" "}
+                      <path d="M5.5 4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm8 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-8 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm4-4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                    </svg>
+                  </button>
                 </span>
               </div>
-            </section>
-            <p className="mt-6 text-center text-xs font-medium text-gray-600">
-              Built by{" "}
-              <a
-                className="font-medium text-blue-600 transition duration-150 ease-in-out hover:text-blue-500 focus:underline focus:outline-none"
-                href="https://twitter.com/agctyz"
+
+              <div className="relative mt-4 sm:mt-0">
+                <label htmlFor="nickname" className="sr-only">
+                  Nickname
+                </label>
+
+                <input
+                  type="input"
+                  id="nickname"
+                  value={nickName}
+                  placeholder="Nick Name"
+                  onChange={(e) => setNickName(e.target.value)}
+                  className="w-full rounded-md border-gray-200 bg-white p-3 text-gray-700 shadow-sm transition focus:border-white focus:outline-none focus:ring focus:ring-yellow-400"
+                />
+
+                <span className="absolute inset-y-0 right-0 grid w-10 place-content-center">
+                  <button
+                    onClick={() => setNickName(randomName())}
+                    type="button"
+                    className="text-black hover:bg-red-400"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      className="h-4 w-4"
+                    >
+                      <path d="M13 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h10zM3 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3H3z" />{" "}
+                      <path d="M5.5 4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm8 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-8 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm4-4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                    </svg>
+                  </button>
+                </span>
+              </div>
+
+              <button
+                type="button"
+                onClick={go}
+                className="group mt-4 flex w-full items-center justify-center rounded-md bg-rose-600 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring-yellow-400 sm:mt-0 sm:w-auto"
               >
-                @agctyz
-              </a>
-            </p>
+                <span className="text-sm font-medium"> Go </span>
+
+                <svg
+                  className="ml-3 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </main>
     </div>
-  )
-}
-
-interface FeatureListProps {
-  children: React.ReactNode
-}
-
-function FeatureList({ children }: FeatureListProps) {
-  return <ul className="space-y-5 px-12 py-12">{children}</ul>
-}
-
-function Feature({ children, main }) {
-  return (
-    <li className="flex items-center">
-      <CheckIcon className="hiddden hidden h-5 w-5 flex-shrink-0 rounded-full bg-blue-600 p-1 text-gray-100 sm:inline" />
-      <p className="ml-3 hidden text-lg text-gray-600 sm:inline">{children}</p>
-
-      <p className="mx-auto sm:hidden">
-        <InfoText text={main} />
-      </p>
-    </li>
-  )
-}
-
-function InfoText({ text }) {
-  return (
-    <span className="inline-flex items-center rounded-md bg-gray-100 px-3 py-2 font-medium text-gray-700">
-      <CheckIcon className="mr-3 inline-flex h-5 w-5 flex-shrink-0 rounded-full bg-blue-600 p-1 text-gray-100 sm:hidden" />
-      {text}
-    </span>
-  )
-}
-
-function CheckIcon(props) {
-  return (
-    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M5 13l4 4L19 7"
-      />
-    </svg>
   )
 }
