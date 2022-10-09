@@ -4,6 +4,7 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 
 import { randomName, saveRoomToLocalStorage } from "../common/utils"
+import UserCard from "../components/UserCard"
 
 export default function Room() {
   const router = useRouter()
@@ -101,7 +102,23 @@ export default function Room() {
             </button>
           </div>
         )}
-        <div className="mx-auto h-screen max-w-screen-xl px-4 py-32 lg:flex lg:items-center"></div>
+        <div className="ml-10 pt-5">
+          <h1 className="text-lg font-medium">#{roomName}</h1>
+        </div>
+        <div className="mx-auto mt-10 h-screen px-4">
+          <div className="flex flex-row flex-wrap">
+            <UserCard name="test1" className="w-1/3 sm:w-1/5" />
+            <UserCard name="test2" className="w-1/3 sm:w-1/5" />
+            <UserCard name="test3" className="w-1/3 sm:w-1/5" />
+            <UserCard name="test4" className="w-1/3 sm:w-1/5" />
+            <UserCard name="test5" className="w-1/3 sm:w-1/5" />
+            <UserCard name="test1" className="w-1/3 sm:w-1/5" />
+            <UserCard name="test2" className="w-1/3 sm:w-1/5" />
+            <UserCard name="test3" className="w-1/3 sm:w-1/5" />
+            <UserCard name="test4" className="w-1/3 sm:w-1/5" />
+            <UserCard name="test5" className="w-1/3 sm:w-1/5" />
+          </div>
+        </div>
       </main>
     </div>
   )
