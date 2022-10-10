@@ -19,7 +19,11 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "sass": "^1.49.9",
-    "unique-names-generator": "^4.7.1"
+    "unique-names-generator": "^4.7.1",
+    "@membraneframework/membrane-webrtc-js": "^0.1.2",
+    "phoenix": "^1.6.13",
+    "uuid": "^8.3.2",
+    "rxjs": "^7.5.5"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
@@ -42,6 +46,7 @@
     "prettier": "^2.6.1",
     "prettier-plugin-tailwindcss": "^0.1.8",
     "tailwindcss": "^3.0.23",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "@types/phoenix": "^1.5.4"
   }
 }

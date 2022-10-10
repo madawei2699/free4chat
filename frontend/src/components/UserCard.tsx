@@ -2,13 +2,10 @@ import { useState } from "react"
 
 import Avatar from "boring-avatars"
 
-interface UserInfo {
-  name: string
-  className?: string
-}
+import { UserInfo } from "../common/types"
 
 export default function UserCard(user: UserInfo) {
-  const [muteState, setMuteState] = useState<boolean>(false)
+  const [muteState, setMuteState] = useState<boolean>(user.muteState)
   return (
     <div className={user.className}>
       <div className="m-2 rounded-xl border border-gray-700 bg-gray-800 p-4 pb-2 pt-2">
@@ -51,6 +48,14 @@ export default function UserCard(user: UserInfo) {
           <div className="mt-2 text-center">
             <h5 className="text-sm font-normal text-white">{user.name}</h5>
           </div>
+          {user.audioStream !== null && (
+            <audio
+              ref={(audio) => {
+                // audio.srcObject = user.audioStream
+              }}
+              autoPlay
+            ></audio>
+          )}
         </div>
       </div>
     </div>

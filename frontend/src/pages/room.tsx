@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useLayoutEffect } from "react"
 
 import Head from "next/head"
 import { useRouter } from "next/router"
 
+import { UserInfo } from "../common/types"
 import { randomName, saveRoomToLocalStorage } from "../common/utils"
 import UserCard from "../components/UserCard"
+import Store from "../store/store"
 
 export default function Room() {
   const router = useRouter()
@@ -12,13 +14,15 @@ export default function Room() {
   const [roomName, setRoomName] = useState<string>("")
   const [nickName, setNickName] = useState<string>("")
   const [showNickNamePop, setShowNickNamePop] = useState<boolean>(false)
+  const [errorMsg, setErrorMsg] = useState<any>("")
+  const [participants, setParticipants] = useState<UserInfo[]>([])
 
   const dissmisNickNamePop = () => {
     setShowNickNamePop(false)
     saveRoomToLocalStorage(roomName, nickName)
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!router.isReady) return
     if (roomId === undefined || roomId === "") {
       router.push("/")
@@ -33,7 +37,11 @@ export default function Room() {
         setShowNickNamePop(true)
       }
     }
-  }, [setRoomName, roomId, router])
+    if (roomName === "" || nickName === "") return
+    Store.init(roomName, nickName) // init chat room
+    Store.subscribeParticipants(setParticipants, roomName) // use rxjs to subscribe chat room participants
+    Store.subscribeError(setErrorMsg, roomName) // use rxjs to subscribe chat room error message
+  }, [nickName, roomName, roomId, router])
 
   return (
     <div>
@@ -102,21 +110,50 @@ export default function Room() {
             </button>
           </div>
         )}
+        {errorMsg !== undefined &&
+          errorMsg !== "" &&
+          errorMsg.message !== undefined &&
+          errorMsg.message !== "" && (
+            <div
+              className="flex items-center gap-4 rounded bg-gray-900 p-4 text-white"
+              role="alert"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-amber-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                />
+              </svg>
+
+              <strong className="text-sm font-normal">
+                {" "}
+                {errorMsg.message}{" "}
+              </strong>
+            </div>
+          )}
         <div className="ml-10 pt-5">
           <h1 className="text-lg font-medium">#{roomName}</h1>
         </div>
         <div className="mx-auto mt-10 h-screen px-4">
           <div className="flex flex-row flex-wrap">
-            <UserCard name="test1" className="w-1/3 sm:w-1/5" />
-            <UserCard name="test2" className="w-1/3 sm:w-1/5" />
-            <UserCard name="test3" className="w-1/3 sm:w-1/5" />
-            <UserCard name="test4" className="w-1/3 sm:w-1/5" />
-            <UserCard name="test5" className="w-1/3 sm:w-1/5" />
-            <UserCard name="test1" className="w-1/3 sm:w-1/5" />
-            <UserCard name="test2" className="w-1/3 sm:w-1/5" />
-            <UserCard name="test3" className="w-1/3 sm:w-1/5" />
-            <UserCard name="test4" className="w-1/3 sm:w-1/5" />
-            <UserCard name="test5" className="w-1/3 sm:w-1/5" />
+            {participants.map((p, _i) => (
+              <UserCard
+                key={p.peerId}
+                peerId={p.peerId}
+                name={p.name}
+                muteState={p.muteState}
+                audioStream={p.audioStream}
+                className="w-1/3 sm:w-1/5"
+              />
+            ))}
           </div>
         </div>
       </main>
