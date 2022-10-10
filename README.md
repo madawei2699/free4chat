@@ -11,7 +11,7 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 ## Features
 
 - **Common**
-  - [ ] Use [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to replace http protocol of JSON-RPC
+  - [x] Use [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to replace http protocol of JSON-RPC
 - **Room**
   - [ ] Text chat, can sent text or emoji
   - [ ] Can send arbitrary data by WebRTC datachannel
@@ -30,10 +30,10 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
   
 ## Architecture
 - **Tech Stack**
-  - [ ] Use Elixir/Phoenix to rewrite the backend code 🚩
-  - [ ] Use Recat/Next.js to rewrite the frontend code
+  - [x] Use Elixir/Phoenix to rewrite the backend code
+  - [x] Use Recat/Next.js to rewrite the frontend code
 - **Infra**
-  - [ ] Use docker to deploy to PaaS platform like [Railway](https://railway.app/) or [Fly](https://fly.io/)
+  - [ ] Use docker to deploy to PaaS platform like [Railway](https://railway.app/) or [Fly](https://fly.io/) 🚩
   - [ ] Backend service cluster, auto scaling, load balancing, etc.
   - [ ] Security enhancement, like coturn TLS setup, end-to-end encryption, etc.
   - [ ] Privacy enhancement.
