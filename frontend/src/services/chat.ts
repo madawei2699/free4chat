@@ -29,18 +29,22 @@ export class ChatService {
     this.subject = subject
     this.socket = new Socket("wss://macbook-m1.tailnet-a122.ts.net:4000/socket")
     this.socket.connect()
+    if (!this.socket.isConnected) {
+      this.subject.error("cannot connect server!")
+      return
+    }
     this.webrtcChannel = this.socket.channel(`room:` + roomName, {
       isSimulcastOn: false, // audio not need simulcast
     })
 
     this.webrtcChannel.onError((e) => {
       this.socketOff()
-      this.subject.error(e)
+      this.subject.error("on error!")
     })
 
     this.webrtcChannel.onClose(() => {
       this.socketOff()
-      this.subject.error(new Error("on close!"))
+      this.subject.error("on close!")
     })
 
     this.webrtcSocketRefs.push(this.socket.onError(this.leave))
@@ -49,20 +53,14 @@ export class ChatService {
     this.webrtc = new MembraneWebRTC({
       callbacks: {
         onSendMediaEvent: (mediaEvent: SerializedMediaEvent) => {
-          console.log("onSendMediaEvent")
-          console.log(mediaEvent)
           this.webrtcChannel.push("mediaEvent", { data: mediaEvent })
         },
         onConnectionError: () => {
           this.subject.error(
-            new Error(
-              "Cannot connect to server, refresh the page and try again"
-            )
+            "Cannot connect to server, refresh the page and try again"
           )
         },
         onJoinSuccess: (_peerId, peersInRoom) => {
-          console.log("onJoinSuccess")
-          console.log(peersInRoom)
           this.localAudioStream?.getTracks().forEach((track) => {
             const trackId = this.webrtc.addTrack(
               track,
@@ -82,7 +80,6 @@ export class ChatService {
           throw `Peer denied.`
         },
         onTrackReady: (ctx) => {
-          console.log("onTrackReady")
           this.attachStream(ctx.peer.id, ctx.stream)
           if (ctx.track?.kind === "audio") {
             this.updateTrackStatus(ctx.peer.id, ctx.metadata.active)
@@ -91,20 +88,15 @@ export class ChatService {
         onTrackAdded: (_ctx) => {},
         onTrackRemoved: (_ctx) => {},
         onTrackUpdated: (ctx) => {
-          console.log("onTrackUpdated")
           if (ctx.track?.kind == "audio") {
             this.updateTrackStatus(ctx.peer.id, ctx.metadata.active)
           }
         },
         onPeerJoined: (peer) => {
-          console.log("onPeerJoined")
-          console.log(peer)
           this.addPeer(peer)
           this.setParticipantsList()
         },
         onPeerLeft: (peer) => {
-          console.log("onPeerLeft")
-          console.log(peer)
           this.removePeer(peer)
           this.setParticipantsList()
         },
@@ -114,15 +106,11 @@ export class ChatService {
     })
 
     this.webrtcChannel.on("mediaEvent", (event: any) => {
-      console.log("mediaEvent")
-      console.log(event.data)
       this.webrtc.receiveMediaEvent(event.data)
     })
   }
 
   public join = async (nickName: string) => {
-    console.log("start join....")
-    console.log(nickName)
     await this.askForPermissions()
     try {
       this.localAudioStream = await navigator.mediaDevices.getUserMedia({
@@ -137,6 +125,7 @@ export class ChatService {
       trackIdToMetadata: null,
     }
     this.addPeer(localPeer)
+    this.setParticipantsList()
     this.attachStream(LOCAL_PEER_ID, this.localAudioStream)
     await this.phoenixChannelPushResult(this.webrtcChannel.join())
 
@@ -144,25 +133,32 @@ export class ChatService {
   }
 
   private updateParticipants = (users: UserInfo[]) => {
+    const findMe = this.participants.filter((p) => p.peerId === LOCAL_PEER_ID)
+    var me: UserInfo
+    if (findMe.length > 0) {
+      me = findMe[0]
+    }
     this.participants = users
+    if (me) {
+      this.participants
+        .filter((p) => p.peerId === LOCAL_PEER_ID)
+        .map((p) => {
+          p.audioStream = me.audioStream
+          p.muteState = me.muteState || false
+        })
+    }
     this.subject.next(this.participants)
   }
 
   private setParticipantsList = () => {
     const users: UserInfo[] = []
-    console.log("setParticipantsList=>peers")
-    console.log(this.peers)
     this.peers.map((p) => {
       users.push({ name: p.metadata.displayName, peerId: p.id })
     })
-    console.log("setParticipantsList")
-    console.log(users)
     this.updateParticipants(users)
   }
 
   private attachStream = (peerId: string, audio: MediaStream) => {
-    console.log("attachStream")
-    console.log(this.participants)
     this.updateParticipants(
       this.participants.map((p) => {
         if (p.peerId === peerId) {
@@ -174,12 +170,10 @@ export class ChatService {
   }
 
   private updateTrackStatus = (peerId: string, status: boolean) => {
-    console.log("updateTrackStatus")
-    console.log(this.participants)
     this.updateParticipants(
       this.participants.map((p) => {
         if (p.peerId === peerId) {
-          p.muteState = status
+          p.muteState = !status
         }
         return p
       })
