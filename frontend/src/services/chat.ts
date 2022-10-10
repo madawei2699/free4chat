@@ -11,6 +11,7 @@ import { LOCAL_PEER_ID, AUDIO_TRACK_CONSTRAINTS } from "@common/consts"
 import { UserInfo } from "../common/types"
 
 export class ChatService {
+  private room: string
   private participants: UserInfo[] = []
   private peers: Peer[] = []
 
@@ -26,6 +27,7 @@ export class ChatService {
   private subject: Subject<UserInfo[]>
 
   constructor(roomName: string, subject) {
+    this.room = roomName
     this.subject = subject
     this.socket = new Socket("wss://macbook-m1.tailnet-a122.ts.net:4000/socket")
     this.socket.connect()
@@ -133,11 +135,7 @@ export class ChatService {
   }
 
   private updateParticipants = (users: UserInfo[]) => {
-    const findMe = this.participants.filter((p) => p.peerId === LOCAL_PEER_ID)
-    var me: UserInfo
-    if (findMe.length > 0) {
-      me = findMe[0]
-    }
+    const me = this.getSelf()
     this.participants = users
     if (me) {
       this.participants
@@ -145,15 +143,47 @@ export class ChatService {
         .map((p) => {
           p.audioStream = me.audioStream
           p.muteState = me.muteState || false
+          p.room = me.room
         })
     }
     this.subject.next(this.participants)
   }
 
+  public muteSelf = () => {
+    const me = this.getSelf()
+    if (me === null) return
+    // update local audio track status
+    this.localAudioStream
+      .getAudioTracks()
+      .forEach((track) => (track.enabled = !track.enabled))
+    // update local audio track status to server who will broadcast to all room user
+    this.localAudioTrackIds.forEach((track) => {
+      this.webrtc.updateTrackMetadata(track, { active: me.muteState })
+    })
+    // update local peer mute status
+    this.updateParticipants(
+      this.participants.map((p) => {
+        if (p.peerId === LOCAL_PEER_ID) {
+          p.muteState = !me.muteState
+        }
+        return p
+      })
+    )
+  }
+
+  private getSelf = () => {
+    const findMe = this.participants.filter((p) => p.peerId === LOCAL_PEER_ID)
+    return findMe.length > 0 ? findMe[0] : null
+  }
+
   private setParticipantsList = () => {
     const users: UserInfo[] = []
     this.peers.map((p) => {
-      users.push({ name: p.metadata.displayName, peerId: p.id })
+      users.push({
+        name: p.metadata.displayName,
+        peerId: p.id,
+        room: this.room,
+      })
     })
     this.updateParticipants(users)
   }

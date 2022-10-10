@@ -1,16 +1,19 @@
-import { useState, useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 
 import Avatar from "boring-avatars"
 
 import { LOCAL_PEER_ID } from "@common/consts"
 
 import { UserInfo } from "../common/types"
+import Store from "../store/store"
 
 export default function UserCard(user: UserInfo) {
-  const [muteState, setMuteState] = useState<boolean>(user.muteState)
   const audioRef = useRef(null)
+  const muteSelf = () => {
+    Store.muteSelf(user.room)
+  }
   useEffect(() => {
-    if (user.audioStream !== null) {
+    if (user.audioStream !== null && !user.muteState) {
       audioRef.current.srcObject = user.audioStream
     }
   }, [user])
@@ -22,10 +25,10 @@ export default function UserCard(user: UserInfo) {
             <Avatar size={40} variant="beam" name={user.name} />
             <button
               className="ml-auto"
-              onClick={() => setMuteState(!muteState)}
+              onClick={muteSelf}
               disabled={user.peerId !== LOCAL_PEER_ID}
             >
-              {!muteState && (
+              {!user.muteState && (
                 <svg
                   className="bi bi-mic"
                   fill="currentColor"
@@ -38,7 +41,7 @@ export default function UserCard(user: UserInfo) {
                   <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
                 </svg>
               )}
-              {muteState && (
+              {user.muteState && (
                 <svg
                   className="bi bi-mic-mute"
                   fill="currentColor"
@@ -55,7 +58,9 @@ export default function UserCard(user: UserInfo) {
           </div>
 
           <div className="mt-2 text-center">
-            <h5 className="text-sm font-normal text-white">{user.name}</h5>
+            <h5 className="text-sm font-normal text-white">
+              {user.peerId === LOCAL_PEER_ID ? user.name + " (ME)" : user.name}
+            </h5>
           </div>
           <audio ref={(audio) => (audioRef.current = audio)} autoPlay></audio>
         </div>

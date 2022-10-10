@@ -58,6 +58,13 @@ const store = {
     }
     room.subject.subscribe({ error: setErrMsg })
   },
+  muteSelf: (roomName: string) => {
+    const room = getRoom(roomName)
+    if (room === null) {
+      throw new Error("must init room firstly!")
+    }
+    room.chat.muteSelf()
+  },
   resetStore: () => {
     state = initialState
   },

@@ -159,6 +159,7 @@ export default function Room() {
                   key={p.peerId}
                   peerId={p.peerId}
                   name={p.name}
+                  room={p.room}
                   muteState={p.muteState}
                   audioStream={p.audioStream}
                   className="w-1/8 sm:w-1/5"
