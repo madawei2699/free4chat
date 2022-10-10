@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react"
 
 import Avatar from "boring-avatars"
 
+import { LOCAL_PEER_ID } from "@common/consts"
+
 import { UserInfo } from "../common/types"
 
 export default function UserCard(user: UserInfo) {
@@ -21,6 +23,7 @@ export default function UserCard(user: UserInfo) {
             <button
               className="ml-auto"
               onClick={() => setMuteState(!muteState)}
+              disabled={user.peerId !== LOCAL_PEER_ID}
             >
               {!muteState && (
                 <svg

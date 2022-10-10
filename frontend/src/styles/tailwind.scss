@@ -9,3 +9,9 @@
 html {
   @apply antialiased;
 }
+
+.loader {
+  svg {
+    margin: auto
+  }
+}
