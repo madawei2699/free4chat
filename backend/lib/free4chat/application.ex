@@ -14,6 +14,8 @@ defmodule Free4chat.Application do
     config_common_dtls_key_cert()
     create_integrated_turn_cert_file()
 
+    topologies = Application.get_env(:libcluster, :topologies) || []
+
     children = [
       # Start the Telemetry supervisor
       Free4chatWeb.Telemetry,
