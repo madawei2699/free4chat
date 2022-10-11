@@ -153,7 +153,7 @@ export default function Room() {
             </div>
           )}
           <div className="mx-auto mt-10 h-screen px-8">
-            <div className="flex flex-row flex-wrap">
+            <div className="flex flex-row flex-wrap justify-center sm:justify-start">
               {participants.map((p, _i) => (
                 <UserCard
                   key={p.peerId}
@@ -162,7 +162,7 @@ export default function Room() {
                   room={p.room}
                   muteState={p.muteState}
                   audioStream={p.audioStream}
-                  className="w-1/8 sm:w-1/5"
+                  className="sm:1/2 md:basis-1/8"
                 />
               ))}
             </div>

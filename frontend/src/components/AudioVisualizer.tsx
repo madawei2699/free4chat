@@ -24,11 +24,23 @@ export default function AudioVisualizer(props: Audio) {
     const dataArray = new Uint8Array(bufferLength)
     analyser.getByteTimeDomainData(dataArray)
 
-    const canvasCtx = analyserCanvas.current.getContext("2d")
+    const canvas = analyserCanvas.current
+    const canvasCtx = canvas.getContext("2d")
+
+    const g = color[1]
+    const b = color[2]
 
     const draw = () => {
+      const WIDTH = canvas.width
+      const HEIGHT = canvas.height
+
       requestAnimationFrame(draw)
       analyser.getByteFrequencyData(dataArray)
+
+      // clear canvas for next drawing
+      canvasCtx.fillStyle = "rgb(31, 41, 55)"
+      canvasCtx.fillRect(0, 0, WIDTH, HEIGHT)
+
       const barWidth = 4
       let barHeight: number
       let x = 0
@@ -36,10 +48,18 @@ export default function AudioVisualizer(props: Audio) {
       for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i] / 2
 
-        canvasCtx.fillStyle = `rgb(${barHeight}, ${color[1]}, ${color[2]})`
+        const r = Math.floor(barHeight + 64)
+        if (g % 3 === 0) {
+          canvasCtx.fillStyle = `rgb(${r},${g},${b})`
+        } else if (g % 3 === 1) {
+          canvasCtx.fillStyle = `rgb(${g},${r},${b})`
+        } else {
+          canvasCtx.fillStyle = `rgb(${g},${b},${r})`
+        }
+
         canvasCtx.fillRect(x, 20 - barHeight / 2, barWidth, barHeight)
 
-        x += barWidth + 1
+        x += barWidth + 2
       }
     }
     draw()
@@ -47,7 +67,7 @@ export default function AudioVisualizer(props: Audio) {
 
   return (
     <div className="visualizer mx-auto mt-4">
-      <canvas ref={analyserCanvas} className="h-1/2 w-4/5"></canvas>
+      <canvas ref={analyserCanvas} className="h-12 w-4/5"></canvas>
     </div>
   )
 }
