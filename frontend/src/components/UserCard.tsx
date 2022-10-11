@@ -5,6 +5,7 @@ import Avatar from "boring-avatars"
 import { LOCAL_PEER_ID } from "@common/consts"
 
 import { UserInfo } from "../common/types"
+import AudioVisualizer from "../components/AudioVisualizer"
 import Store from "../store/store"
 
 export default function UserCard(user: UserInfo) {
@@ -63,6 +64,10 @@ export default function UserCard(user: UserInfo) {
             </h5>
           </div>
           <audio ref={(audio) => (audioRef.current = audio)} autoPlay></audio>
+          <AudioVisualizer
+            audio={user.audioStream}
+            name={user.name}
+          ></AudioVisualizer>
         </div>
       </div>
     </div>
