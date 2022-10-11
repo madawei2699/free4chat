@@ -80,7 +80,7 @@ $ docker run -p 50000-50050:50000-50050/udp -p 4000:4000/tcp -e INTEGRATED_TURN_
 
 Alternatively, you can build docker image from source
 ```bash
-$ docker build  -t free4chat .
+$ docker build --build-arg DASHBOARD_AUTH_USERNAME=xxx DASHBOARD_AUTH_PASSWORD=xxx -t free4chat .
 ```
 
 And start a container with this image
