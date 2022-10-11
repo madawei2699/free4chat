@@ -23,7 +23,9 @@ defmodule Free4chat.Application do
       {Phoenix.PubSub, name: Free4chat.PubSub},
       {Registry, keys: :unique, name: Free4chat.Room.Registry},
       # Start the Endpoint (http/https)
-      Free4chatWeb.Endpoint
+      Free4chatWeb.Endpoint,
+      # setup for clustering
+      {Cluster.Supervisor, [topologies, [name: Free4chat.ClusterSupervisor]]}
       # Start a worker by calling: Free4chat.Worker.start_link(arg)
       # {Free4chat.Worker, arg}
     ]

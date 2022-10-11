@@ -42,7 +42,8 @@ defmodule Free4chat.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:membrane_rtc_engine, github: "membraneframework/membrane_rtc_engine", override: true},
       {:uuid, "~> 1.1"},
-      {:cowlib, "~> 2.11.0", override: true}
+      {:cowlib, "~> 2.11.0", override: true},
+      {:libcluster, "~> 3.3.1"}
     ]
   end
 
