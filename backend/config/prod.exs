@@ -48,4 +48,4 @@ config :logger, level: :info
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
 config :free4chat, Free4chatWeb.Endpoint,
-  check_origin: ["//free4.chat"]
+  check_origin: ["//*.free4.chat"]
