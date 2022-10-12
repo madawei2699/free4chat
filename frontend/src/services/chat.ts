@@ -29,7 +29,7 @@ export class ChatService {
   constructor(roomName: string, subject) {
     this.room = roomName
     this.subject = subject
-    this.socket = new Socket("wss://macbook-m1.tailnet-a122.ts.net:4000/socket")
+    this.socket = new Socket("wss://rtc2.free4.chat/socket")
     this.socket.connect()
     if (!this.socket.isConnected) {
       this.subject.error("cannot connect server!")
