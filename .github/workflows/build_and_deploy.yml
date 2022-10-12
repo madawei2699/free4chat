@@ -9,11 +9,11 @@ on:
 
 env: 
   SNAME1: rtc1
-  VIRTUAL_HOST1: $SNAME1.free4.chat
+  VIRTUAL_HOST1: rtc1.free4.chat
   EXTERNAL_IP1: 18.183.125.187
   PRIVATE_IP1: 172.26.30.77
   SNAME2: rtc2
-  VIRTUAL_HOST2: $SNAME2.free4.chat
+  VIRTUAL_HOST2: rtc2.free4.chat
   EXTERNAL_IP2: 13.231.173.147
   PRIVATE_IP2: 172.26.11.100
   SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
@@ -67,7 +67,7 @@ jobs:
 
       - name: Prepare .env file for the deployment
         id: variables_population
-        run: echo "RELEASE_DISTRIBUTION=name RELEASE_NODE=$SNAME1@$PRIVATE_IP1 SECRET_KEY_BASE=$SECRET_KEY_BASE VIRTUAL_HOST=$VIRTUAL_HOST1 \nEXTERNAL_IP=$EXTERNAL_IP1 \nTAG=$TAG" > .env
+        run: echo "RELEASE_DISTRIBUTION=name \nRELEASE_NODE=$SNAME1@$PRIVATE_IP1 \nSECRET_KEY_BASE=$SECRET_KEY_BASE \nVIRTUAL_HOST=$VIRTUAL_HOST1 \nEXTERNAL_IP=$EXTERNAL_IP1 \nTAG=$TAG" > .env
 
       - name: Deploy docker compose to a pre-configured server
         id: deploy
@@ -80,7 +80,7 @@ jobs:
           docker_login_user: ${{ secrets.DOCKER_HUB_USERNAME }}
           docker_login_registry : https://index.docker.io/v1/
           stack_file_name: ./backend/docker-compose.yml
-          args: -p $SNAME1 --env-file .env up -d --remove-orphans
+          args: -p rtc1 --env-file .env up -d --remove-orphans
 
   deploy-rtc2:
     runs-on: ubuntu-latest
@@ -90,7 +90,7 @@ jobs:
 
       - name: Prepare .env file for the deployment
         id: variables_population
-        run: echo "RELEASE_DISTRIBUTION=name RELEASE_NODE=$SNAME2@$PRIVATE_IP2 SECRET_KEY_BASE=$SECRET_KEY_BASE VIRTUAL_HOST=$VIRTUAL_HOST2 \nEXTERNAL_IP=$EXTERNAL_IP2 \nTAG=$TAG" > .env
+        run: echo "RELEASE_DISTRIBUTION=name \nRELEASE_NODE=$SNAME2@$PRIVATE_IP2 \nSECRET_KEY_BASE=$SECRET_KEY_BASE \nVIRTUAL_HOST=$VIRTUAL_HOST2 \nEXTERNAL_IP=$EXTERNAL_IP2 \nTAG=$TAG" > .env
 
       - name: Deploy docker compose to a pre-configured server
         id: deploy
@@ -103,4 +103,4 @@ jobs:
           docker_login_user: ${{ secrets.DOCKER_HUB_USERNAME }}
           docker_login_registry : https://index.docker.io/v1/
           stack_file_name: ./backend/docker-compose.yml
-          args: -p $SNAME2 --env-file .env up -d --remove-orphans
+          args: -p rtc2 --env-file .env up -d --remove-orphans
