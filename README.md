@@ -33,7 +33,8 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
   - [x] Use Elixir/Phoenix to rewrite the backend code
   - [x] Use Recat/Next.js to rewrite the frontend code
 - **Infra**
-  - [ ] Use docker to deploy to PaaS platform like [Railway](https://railway.app/) or [Fly](https://fly.io/) 🚩
+  - [x] ~~Use docker to deploy to PaaS platform like [Railway](https://railway.app/) or [Fly](https://fly.io/)~~ 
+  - [ ] Use GitHub Actions + AWS Lightsail to deploy backend server 🚩
   - [ ] Backend service cluster, auto scaling, load balancing, etc.
   - [ ] Security enhancement, like coturn TLS setup, end-to-end encryption, etc.
     - [ ] TURN enable TLS
