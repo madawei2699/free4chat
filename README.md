@@ -13,7 +13,7 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 - **Common**
   - [x] Use [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to replace http protocol of JSON-RPC
 - **Room**
-  - [ ] Text chat, can sent text or emoji
+  - [ ] Text chat, can sent text or emoji 🚩
   - [ ] Can send arbitrary data by WebRTC datachannel
   - [ ] Can share screen if the device support
   - [ ] Room permission setting, like public/private type setting
@@ -34,8 +34,10 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
   - [x] Use Recat/Next.js to rewrite the frontend code
 - **Infra**
   - [x] ~~Use docker to deploy to PaaS platform like [Railway](https://railway.app/) or [Fly](https://fly.io/)~~ 
-  - [ ] Use GitHub Actions + AWS Lightsail to deploy backend server 🚩
-  - [ ] Backend service cluster, auto scaling, load balancing, etc.
+  - [x] Use GitHub Actions + AWS Lightsail to deploy backend server
+  - [x] Backend service cluster, auto scaling, load balancing, etc.
+    - Backend service use Elixir libcluster to build cluster
+    - Frontend app use the client load balance strategy
   - [ ] Security enhancement, like coturn TLS setup, end-to-end encryption, etc.
     - [ ] TURN enable TLS
   - [ ] Privacy enhancement.
