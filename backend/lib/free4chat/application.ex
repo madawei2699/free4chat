@@ -14,7 +14,7 @@ defmodule Free4chat.Application do
     config_common_dtls_key_cert()
     create_integrated_turn_cert_file()
 
-    # topologies = Application.get_env(:libcluster, :topologies) || []
+    topologies = Application.get_env(:libcluster, :topologies) || []
 
     children = [
       # Start the Telemetry supervisor
@@ -27,7 +27,7 @@ defmodule Free4chat.Application do
       # Start the Endpoint (http/https)
       Free4chatWeb.Endpoint,
       # setup for clustering
-      # {Cluster.Supervisor, [topologies, [name: Free4chat.ClusterSupervisor]]}
+      {Cluster.Supervisor, [topologies, [name: Free4chat.ClusterSupervisor]]}
       # Start a worker by calling: Free4chat.Worker.start_link(arg)
       # {Free4chat.Worker, arg}
     ]

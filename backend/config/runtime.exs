@@ -83,7 +83,7 @@ get_env = fn env, default ->
 end
 
 host = get_env.("VIRTUAL_HOST", "localhost")
-port = 4000
+port = 80
 
 args =
   if protocol == :https do
@@ -182,3 +182,11 @@ if otel_state != :purge,
       ]
     )
 
+config :libcluster,
+  debug: true,
+  topologies: [
+    free4chat: [
+      strategy: Cluster.Strategy.Epmd,
+      config: [hosts: [:"rtc1@172.26.30.77", :"rtc2@172.26.11.100"]]
+    ]
+  ]

@@ -68,8 +68,8 @@ COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/free4chat ./
 
 ENV HOME=/app
 
-EXPOSE 4000
+EXPOSE 80
 
-HEALTHCHECK CMD curl --fail http://localhost:4000 || exit 1  
+HEALTHCHECK CMD curl --fail http://localhost:80 || exit 1  
 
 CMD ["bin/free4chat", "start"]

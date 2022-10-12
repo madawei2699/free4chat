@@ -4,7 +4,32 @@
 
 ### AWS Lightsail
 
+1. use `./scripts/init-server.sh` to init server.
+2. On Lightsail web console -> IPv4 Firewall, add TCP port `49999` and UDP port `50000-65355`.
+
+### GitHub Actions
+
+Set these secrets in `Actions secrets`:
+
+```bash
+DOCKER_HUB_USERNAME=
+DOCKER_HUB_PASSWORD=
+DOCKER_HUB_ACCESS_TOKEN=
+
+DASHBOARD_AUTH_USERNAME=
+DASHBOARD_AUTH_PASSWORD=
+
+SECRET_KEY_BASE=
+SSH_PRIV_KEY=
+SSH_PUB_KEY=
+
+RTC1_HOST=
+RTC2_HOST=
+```
+
 ### Cluster
+
+Use [libcluster](https://github.com/bitwalker/libcluster) to build cluster server, and frontend do the client load balance (random strategy).
 
 ### ~~Fly.io~~
 
@@ -25,4 +50,6 @@ flyctl deploy --build-arg DASHBOARD_AUTH_USERNAME=admin --build-arg DASHBOARD_AU
 ```
 </details>
 
-## Deploy frontend server
+## Deploy frontend app
+
+Use [Vercel](vercel.com) to deploy the frontend app.

@@ -1,7 +1,7 @@
 version: "3"
 services:
   free4chat:
-    image: free4chat:${TAG:-latest}
+    image: madawei2699/free4chat:${TAG:-latest}
     network_mode: "host"
     environment:
       VIRTUAL_HOST: "${VIRTUAL_HOST:-localhost}"
