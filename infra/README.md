@@ -9,6 +9,7 @@
 3. Because our backend server run in Docker as `host` network mode and listen port `4000`, our DNS record direct to `80` or `443`, so we need redirect the traffic from these ports to port `4000`.
    1. `sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 4000`
    2. `sudo iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 4000`
+   3. __NOTE__: These iptables rules not persistent and need __re-execute__ when server reboot.
 
 ### GitHub Actions
 
