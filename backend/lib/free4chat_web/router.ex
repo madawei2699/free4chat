@@ -25,7 +25,7 @@ defmodule Free4chatWeb.Router do
     plug :basic_auth, username: System.fetch_env!("DASHBOARD_AUTH_USERNAME"), password: System.fetch_env!("DASHBOARD_AUTH_PASSWORD")
   end
 
-  if Mix.env() in [:dev, :test] do
+  if Mix.env() in [:dev, :prod] do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
