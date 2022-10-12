@@ -6,7 +6,11 @@ import {
 import { Socket, Push } from "phoenix"
 import { Subject } from "rxjs"
 
-import { LOCAL_PEER_ID, AUDIO_TRACK_CONSTRAINTS } from "@common/consts"
+import {
+  LOCAL_PEER_ID,
+  AUDIO_TRACK_CONSTRAINTS,
+  GET_API_SERVER_URL,
+} from "@common/consts"
 
 import { UserInfo } from "../common/types"
 
@@ -29,7 +33,7 @@ export class ChatService {
   constructor(roomName: string, subject) {
     this.room = roomName
     this.subject = subject
-    this.socket = new Socket("wss://rtc2.free4.chat/socket")
+    this.socket = new Socket(GET_API_SERVER_URL())
     this.socket.connect()
     if (!this.socket.isConnected) {
       this.subject.error("cannot connect server!")
