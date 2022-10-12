@@ -6,6 +6,9 @@
 
 1. use `./scripts/init-server.sh` to init server.
 2. On Lightsail web console -> IPv4 Firewall, add TCP port `49999` and UDP port `50000-65355`.
+3. Because our backend server run in Docker as `host` network mode and listen port `4000`, our DNS record direct to `80` or `443`, so we need redirect the traffic from these ports to port `4000`.
+   1. `sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 4000`
+   2. `sudo iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 4000`
 
 ### GitHub Actions
 
