@@ -26,6 +26,8 @@ defmodule Free4chat.Application do
       {Registry, keys: :unique, name: Free4chat.Room.Registry},
       # Start the Endpoint (http/https)
       Free4chatWeb.Endpoint,
+      # Start turn server before the cluster
+      Free4chat.TurnServer,
       # setup for clustering
       {Cluster.Supervisor, [topologies, [name: Free4chat.ClusterSupervisor]]}
       # Start a worker by calling: Free4chat.Worker.start_link(arg)

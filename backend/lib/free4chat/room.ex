@@ -6,7 +6,6 @@ defmodule Free4chat.Room do
   require Membrane.Logger
   require Membrane.OpenTelemetry
 
-  alias Membrane.ICE.TURNManager
   alias Membrane.RTC.Engine
   alias Membrane.RTC.Engine.Endpoint.WebRTC
   alias Membrane.RTC.Engine.Endpoint.WebRTC.SimulcastConfig
@@ -32,9 +31,6 @@ defmodule Free4chat.Room do
     simulcast? = args.simulcast?
     Membrane.Logger.info("Spawning room process: #{inspect(self())}")
 
-    turn_mock_ip = Application.fetch_env!(:free4chat, :integrated_turn_ip)
-    turn_ip = if @mix_env == :prod, do: {0, 0, 0, 0}, else: turn_mock_ip
-
     trace_ctx = Membrane.OpenTelemetry.new_ctx()
     Membrane.OpenTelemetry.attach(trace_ctx)
 
@@ -47,6 +43,9 @@ defmodule Free4chat.Room do
       trace_ctx: trace_ctx,
       parent_span: room_span
     ]
+
+    turn_mock_ip = Application.fetch_env!(:free4chat, :integrated_turn_ip)
+    turn_ip = if @mix_env == :prod, do: {0, 0, 0, 0}, else: turn_mock_ip
 
     turn_cert_file =
       case Application.fetch_env(:free4chat, :integrated_turn_cert_pkey) do
@@ -68,14 +67,6 @@ defmodule Free4chat.Room do
       dtls_pkey: Application.get_env(:free4chat, :dtls_pkey),
       dtls_cert: Application.get_env(:free4chat, :dtls_cert)
     ]
-
-    tcp_turn_port = Application.get_env(:free4chat, :integrated_tcp_turn_port)
-    TURNManager.ensure_tcp_turn_launched(integrated_turn_options, port: tcp_turn_port)
-
-    if turn_cert_file do
-      tls_turn_port = Application.get_env(:free4chat, :integrated_tls_turn_port)
-      TURNManager.ensure_tls_turn_launched(integrated_turn_options, port: tls_turn_port)
-    end
 
     {:ok, pid} = Membrane.RTC.Engine.start(rtc_engine_options, [])
     Engine.register(pid, self())
