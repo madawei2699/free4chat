@@ -15,10 +15,7 @@ export default function AudioVisualizer(props: Audio) {
     const audioCtx = new AudioContext()
     const analyser = audioCtx.createAnalyser()
     const audioSrc = audioCtx.createMediaStreamSource(props.audio)
-    const distortion = audioCtx.createWaveShaper()
     audioSrc.connect(analyser)
-    analyser.connect(distortion)
-    distortion.connect(audioCtx.destination)
     analyser.fftSize = 256
     const bufferLength = analyser.frequencyBinCount
     const dataArray = new Uint8Array(bufferLength)
@@ -57,7 +54,7 @@ export default function AudioVisualizer(props: Audio) {
           canvasCtx.fillStyle = `rgb(${g},${b},${r})`
         }
 
-        canvasCtx.fillRect(x, 20 - barHeight / 2, barWidth, barHeight)
+        canvasCtx.fillRect(x, 40 - barHeight / 2, barWidth, barHeight)
 
         x += barWidth + 2
       }
