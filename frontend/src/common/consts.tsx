@@ -18,7 +18,7 @@ export const BANDWIDTH_LIMITS = {
 
 export const GET_API_SERVER_URL = () => {
   // consider TURN server currently can not scale in cluster, so we use wight random to select the server
-  const choice: number = weightedRand({ 0: 0.4, 1: 0.6 })()
+  const choice: number = weightedRand({ 0: 0.5, 1: 0.5 })()
   const serverAddrs = [
     "wss://rtc1.free4.chat/socket",
     "wss://rtc2.free4.chat/socket",
