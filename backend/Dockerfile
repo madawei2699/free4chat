@@ -72,6 +72,6 @@ ENV HOME=/app
 
 EXPOSE 4000
 
-HEALTHCHECK CMD curl --fail http://localhost:4000 || exit 1  
+HEALTHCHECK CMD curl --fail http://localhost:4000/api/healthcheck || exit 1  
 
 CMD ["bin/free4chat", "start"]
