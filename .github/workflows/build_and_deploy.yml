@@ -90,7 +90,7 @@ jobs:
 
       - name: Prepare .env file for the deployment
         id: variables_population
-        run: printf "INTEGRATED_TURN_IP=$EXTERNAL_IP2 \nRELEASE_DISTRIBUTION=name \nRELEASE_NODE=$SNAME2@$PRIVATE_IP2 \nSECRET_KEY_BASE=$SECRET_KEY_BASE \nVIRTUAL_HOST=$VIRTUAL_HOST2 \nEXTERNAL_IP=$EXTERNAL_IP2 \nTAG=$TAG" > .env
+        run: printf "INTEGRATED_TURN_IP=$EXTERNAL_IP1 \nRELEASE_DISTRIBUTION=name \nRELEASE_NODE=$SNAME2@$PRIVATE_IP2 \nSECRET_KEY_BASE=$SECRET_KEY_BASE \nVIRTUAL_HOST=$VIRTUAL_HOST2 \nEXTERNAL_IP=$EXTERNAL_IP2 \nTAG=$TAG" > .env
 
       - name: Deploy docker compose to a pre-configured server
         id: deploy

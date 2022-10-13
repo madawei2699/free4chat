@@ -38,6 +38,7 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
   - [x] Backend service cluster, auto scaling, load balancing, etc.
     - Backend service use Elixir libcluster to build cluster
     - Frontend app use the client load balance strategy
+    - [ ] [TURN cluster scale](https://github.com/membraneframework/membrane_ice_plugin/issues/20)
   - [ ] Security enhancement, like coturn TLS setup, end-to-end encryption, etc.
     - [ ] TURN enable TLS
   - [ ] Privacy enhancement.
