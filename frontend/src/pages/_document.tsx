@@ -28,6 +28,12 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
             rel="stylesheet"
           />
+          <script
+            async
+            defer
+            data-website-id="656d3289-e627-409c-a9d7-a272cf789f0b"
+            src="https://umami.bmpi.dev/umami.js"
+          ></script>
         </Head>
         <body>
           <Main />
