@@ -44,13 +44,11 @@ export class ChatService {
     })
 
     this.webrtcChannel.onError((e) => {
-      console.log("onError")
       this.socketOff()
       this.subject.error("on error!")
     })
 
     this.webrtcChannel.onClose(() => {
-      console.log("on close!")
       this.socketOff()
       this.subject.error("on close!")
     })
