@@ -14,11 +14,7 @@ export default function UserCard(user: UserInfo) {
     Store.muteSelf(user.room)
   }
   useEffect(() => {
-    if (
-      user.audioStream !== null &&
-      !user.muteState &&
-      user.peerId !== LOCAL_PEER_ID
-    ) {
+    if (user.audioStream !== null && !user.muteState) {
       audioRef.current.srcObject = user.audioStream
     }
   }, [user])
@@ -69,6 +65,9 @@ export default function UserCard(user: UserInfo) {
           </div>
           {user.peerId !== LOCAL_PEER_ID && (
             <audio ref={(audio) => (audioRef.current = audio)} autoPlay></audio>
+          )}
+          {user.peerId === LOCAL_PEER_ID && (
+            <audio ref={(audio) => (audioRef.current = audio)} muted></audio>
           )}
           <AudioVisualizer
             audio={user.audioStream}
