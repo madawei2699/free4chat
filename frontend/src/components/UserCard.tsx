@@ -14,10 +14,10 @@ export default function UserCard(user: UserInfo) {
     Store.muteSelf(user.room)
   }
   useEffect(() => {
-    if (user.audioStream !== null && !user.muteState) {
+    if (user.audioStream !== null) {
       audioRef.current.srcObject = user.audioStream
     }
-  }, [user])
+  }, [user.audioStream])
   return (
     <div className={user.className}>
       <div className="m-2 rounded-xl border border-gray-700 bg-gray-800 p-4 pb-2 pt-2">

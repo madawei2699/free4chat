@@ -44,11 +44,13 @@ export class ChatService {
     })
 
     this.webrtcChannel.onError((e) => {
+      console.log("onError")
       this.socketOff()
       this.subject.error("on error!")
     })
 
     this.webrtcChannel.onClose(() => {
+      console.log("on close!")
       this.socketOff()
       this.subject.error("on close!")
     })
@@ -59,6 +61,8 @@ export class ChatService {
     this.webrtc = new MembraneWebRTC({
       callbacks: {
         onSendMediaEvent: (mediaEvent: SerializedMediaEvent) => {
+          console.log("onSendMediaEvent")
+          console.log(mediaEvent)
           this.webrtcChannel.push("mediaEvent", { data: mediaEvent })
         },
         onConnectionError: () => {
@@ -67,6 +71,8 @@ export class ChatService {
           )
         },
         onJoinSuccess: (_peerId, peersInRoom) => {
+          console.log("onJoinSuccess")
+          console.log(peersInRoom)
           this.localAudioStream?.getTracks().forEach((track) => {
             const trackId = this.webrtc.addTrack(
               track,
@@ -86,6 +92,8 @@ export class ChatService {
           throw `Peer denied.`
         },
         onTrackReady: (ctx) => {
+          console.log("onTrackReady")
+          console.log(ctx)
           this.attachStream(ctx.peer.id, ctx.stream)
           if (ctx.track?.kind === "audio") {
             this.updateTrackStatus(ctx.peer.id, ctx.metadata.active)
@@ -94,6 +102,8 @@ export class ChatService {
         onTrackAdded: (_ctx) => {},
         onTrackRemoved: (_ctx) => {},
         onTrackUpdated: (ctx) => {
+          console.log("onTrackUpdated")
+          console.log(ctx)
           if (ctx.track?.kind == "audio") {
             this.updateTrackStatus(ctx.peer.id, ctx.metadata.active)
           }
@@ -112,6 +122,8 @@ export class ChatService {
     })
 
     this.webrtcChannel.on("mediaEvent", (event: any) => {
+      console.log("mediaEvent")
+      console.log(event)
       this.webrtc.receiveMediaEvent(event.data)
     })
   }
