@@ -63,7 +63,9 @@ export default function UserCard(user: UserInfo) {
               {user.peerId === LOCAL_PEER_ID ? user.name + " (ME)" : user.name}
             </h5>
           </div>
-          <audio ref={(audio) => (audioRef.current = audio)} autoPlay></audio>
+          {user.peerId !== LOCAL_PEER_ID && (
+            <audio ref={(audio) => (audioRef.current = audio)} autoPlay></audio>
+          )}
           <AudioVisualizer
             audio={user.audioStream}
             name={user.name}
