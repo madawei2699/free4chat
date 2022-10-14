@@ -69,8 +69,6 @@ export class ChatService {
           )
         },
         onJoinSuccess: (_peerId, peersInRoom) => {
-          console.log("onJoinSuccess")
-          console.log(peersInRoom)
           this.localAudioStream?.getTracks().forEach((track) => {
             const trackId = this.webrtc.addTrack(
               track,
