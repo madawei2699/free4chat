@@ -14,7 +14,7 @@ export default function UserCard(user: UserInfo) {
     Store.muteSelf(user.room)
   }
   useEffect(() => {
-    if (user.audioStream !== null && !user.muteState) {
+    if (user.audioStream !== null) {
       audioRef.current.srcObject = user.audioStream
     }
   }, [user.audioStream, user.muteState])
