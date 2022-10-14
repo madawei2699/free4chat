@@ -125,13 +125,13 @@ export default function Room() {
       )}
       {participants.length > 0 && (
         <main className="bg-gray-900 text-white">
-          <div className="ml-10 pt-5">
+          <div className="ml-10 mb-5 pt-5">
             <h1 className="text-lg font-medium">#{roomName}</h1>
           </div>
 
           {errorMsg !== "" && (
             <div
-              className="flex items-center gap-4 rounded bg-gray-900 p-4 text-white"
+              className="flex items-center gap-4 rounded bg-gray-900 px-4 text-white"
               role="alert"
             >
               <svg
@@ -152,7 +152,7 @@ export default function Room() {
               <strong className="text-sm font-normal"> {errorMsg} </strong>
             </div>
           )}
-          <div className="mx-auto mt-10 mb-10 px-8">
+          <div className="mx-auto min-h-screen px-8">
             <div className="flex flex-row flex-wrap justify-center sm:justify-start">
               {participants.map((p, _i) => (
                 <UserCard
