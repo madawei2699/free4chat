@@ -187,6 +187,6 @@ config :libcluster,
   topologies: [
     free4chat: [
       strategy: Cluster.Strategy.Epmd,
-      config: [hosts: [:"rtc1@172.26.30.77", :"rtc2@172.26.11.100"]]
+      config: [hosts: [:"rtc1@172.26.8.68", :"rtc2@172.26.25.248"]]
     ]
   ]

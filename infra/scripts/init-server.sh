@@ -29,3 +29,7 @@ echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p /etc/sysctl.conf
 
 sudo tailscale up --advertise-exit-node --ssh
+
+# config iptables
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 4000
+sudo iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 4000
