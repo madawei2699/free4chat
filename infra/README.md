@@ -27,13 +27,23 @@ SECRET_KEY_BASE=
 SSH_PRIV_KEY=
 SSH_PUB_KEY=
 
-RTC1_HOST=
-RTC2_HOST=
+RTC1_HOST={user@ip} # remember update in github actions secrets when server ip update
+RTC2_HOST={user@ip} # remember update in github actions secrets when server ip update
 ```
 
 ### Cluster
 
 Use [libcluster](https://github.com/bitwalker/libcluster) to build cluster server, and frontend do the client load balance (random strategy).
+
+### Upgrade server instance size
+
+When change server or upgrade server, that means ip will changed. We need to do these tasks:
+
+- [ ] Provision server by `scripts/init-server.sh` script.
+- [ ] Replace all public or private ip in code base include github actions config file.
+- [ ] Update `RTC1_HOST` and `RTC1_HOST` in GitHub `Actions secrets`.
+- [ ] Update DNS records.
+- [ ] Redeploy code to server.
 
 ### ~~Fly.io~~
 
