@@ -17,7 +17,7 @@ export default function UserCard(user: UserInfo) {
     if (user.audioStream !== null) {
       audioRef.current.srcObject = user.audioStream
     }
-  }, [user.audioStream, user.muteState])
+  }, [user])
   return (
     <div className={user.className}>
       <div className="m-2 rounded-xl border border-gray-700 bg-gray-800 p-4 pb-2 pt-2">

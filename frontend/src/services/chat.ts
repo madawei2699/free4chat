@@ -17,7 +17,6 @@ import { UserInfo } from "../common/types"
 export class ChatService {
   private room: string
   private participants: UserInfo[] = []
-  private peers: Peer[] = []
 
   private localAudioStream: MediaStream | null = null
   private localAudioTrackIds: string[] = []
@@ -80,7 +79,6 @@ export class ChatService {
           peersInRoom.map((p) => {
             this.addPeer(p)
           })
-          this.setParticipantsList()
         },
         onJoinError: (_metadata) => {
           throw `Peer denied.`
@@ -100,11 +98,9 @@ export class ChatService {
         },
         onPeerJoined: (peer) => {
           this.addPeer(peer)
-          this.setParticipantsList()
         },
         onPeerLeft: (peer) => {
           this.removePeer(peer)
-          this.setParticipantsList()
         },
         onPeerUpdated: (_ctx) => {},
         onTrackEncodingChanged: (_ctx) => {},
@@ -131,7 +127,6 @@ export class ChatService {
       trackIdToMetadata: null,
     }
     this.addPeer(localPeer)
-    this.setParticipantsList()
     this.attachStream(LOCAL_PEER_ID, this.localAudioStream)
     await this.phoenixChannelPushResult(this.webrtcChannel.join())
 
@@ -180,18 +175,6 @@ export class ChatService {
     return findMe.length > 0 ? findMe[0] : null
   }
 
-  private setParticipantsList = () => {
-    const users: UserInfo[] = []
-    this.peers.map((p) => {
-      users.push({
-        name: p.metadata.displayName,
-        peerId: p.id,
-        room: this.room,
-      })
-    })
-    this.updateParticipants(users)
-  }
-
   private attachStream = (peerId: string, audio: MediaStream) => {
     this.updateParticipants(
       this.participants.map((p) => {
@@ -228,14 +211,22 @@ export class ChatService {
   }
 
   private addPeer = (peer: Peer) => {
-    const findPeers = this.peers.filter((p) => p.id === peer.id)
+    const users = this.participants
+    const findPeers = users.filter((u) => u.peerId === peer.id)
     if (findPeers.length === 0) {
-      this.peers.push(peer)
+      users.push({
+        name: peer.metadata.displayName,
+        peerId: peer.id,
+        room: this.room,
+      })
     }
+    this.updateParticipants(users)
   }
 
   private removePeer = (peer: Peer) => {
-    this.peers = this.peers.filter((p) => p.id !== peer.id)
+    this.updateParticipants(
+      this.participants.filter((u) => u.peerId !== peer.id)
+    )
   }
 
   private askForPermissions = async (): Promise<void> => {

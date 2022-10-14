@@ -10,8 +10,8 @@ interface Audio {
 
 export default function AudioVisualizer(props: Audio) {
   const analyserCanvas = useRef(null)
-  const color = nameToColor(props.name)
   useEffect(() => {
+    const color = nameToColor(props.name)
     if (props.audio === undefined) return
     const audioCtx = new AudioContext()
     const analyser = audioCtx.createAnalyser()
@@ -61,7 +61,7 @@ export default function AudioVisualizer(props: Audio) {
       }
     }
     draw()
-  }, [props.audio, color, props.muteState])
+  }, [props])
 
   return (
     <div className="visualizer mx-auto mt-4">
