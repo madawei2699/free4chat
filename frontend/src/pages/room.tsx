@@ -152,7 +152,7 @@ export default function Room() {
               <strong className="text-sm font-normal"> {errorMsg} </strong>
             </div>
           )}
-          <div className="mx-auto mt-10 h-screen px-8">
+          <div className="mx-auto mt-10 mb-10 px-8">
             <div className="flex flex-row flex-wrap justify-center sm:justify-start">
               {participants.map((p, _i) => (
                 <UserCard
