@@ -59,8 +59,6 @@ export class ChatService {
     this.webrtc = new MembraneWebRTC({
       callbacks: {
         onSendMediaEvent: (mediaEvent: SerializedMediaEvent) => {
-          console.log("onSendMediaEvent")
-          console.log(mediaEvent)
           this.webrtcChannel.push("mediaEvent", { data: mediaEvent })
         },
         onConnectionError: () => {
@@ -88,8 +86,6 @@ export class ChatService {
           throw `Peer denied.`
         },
         onTrackReady: (ctx) => {
-          console.log("onTrackReady")
-          console.log(ctx)
           this.attachStream(ctx.peer.id, ctx.stream)
           if (ctx.track?.kind === "audio") {
             this.updateTrackStatus(ctx.peer.id, ctx.metadata.active)
@@ -98,8 +94,6 @@ export class ChatService {
         onTrackAdded: (_ctx) => {},
         onTrackRemoved: (_ctx) => {},
         onTrackUpdated: (ctx) => {
-          console.log("onTrackUpdated")
-          console.log(ctx)
           if (ctx.track?.kind == "audio") {
             this.updateTrackStatus(ctx.peer.id, ctx.metadata.active)
           }
@@ -118,8 +112,6 @@ export class ChatService {
     })
 
     this.webrtcChannel.on("mediaEvent", (event: any) => {
-      console.log("mediaEvent")
-      console.log(event)
       this.webrtc.receiveMediaEvent(event.data)
     })
   }

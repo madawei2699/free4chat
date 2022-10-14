@@ -14,10 +14,6 @@ export default function UserCard(user: UserInfo) {
     Store.muteSelf(user.room)
   }
   useEffect(() => {
-    // eslint-disable-next-line
-    console.log("UserCard>useEffect>user.audioStream>")
-    // eslint-disable-next-line
-    console.log(user.audioStream)
     if (user.audioStream !== null && !user.muteState) {
       audioRef.current.srcObject = user.audioStream
     }
