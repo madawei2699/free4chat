@@ -43,7 +43,7 @@ When change server or upgrade server, that means ip will changed. We need to do 
 - [ ] Replace all public or private ip in code base include github actions config file.
 - [ ] Update `RTC1_HOST` and `RTC1_HOST` in GitHub `Actions secrets`.
 - [ ] Update DNS records.
-- [ ] Redeploy code to server.
+- [ ] Re-deploy container to server.
 - [ ] Open the firewall IPV4/IPV6 protocols in server web console.
 - [ ] If server reboot, remember to config the iptables (80/443 -> 4000) in server.
 
