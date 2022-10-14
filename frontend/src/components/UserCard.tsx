@@ -18,10 +18,10 @@ export default function UserCard(user: UserInfo) {
     console.log("UserCard>useEffect>user.audioStream>")
     // eslint-disable-next-line
     console.log(user.audioStream)
-    if (user.audioStream !== null) {
+    if (user.audioStream !== null && !user.muteState) {
       audioRef.current.srcObject = user.audioStream
     }
-  }, [user.audioStream])
+  }, [user.audioStream, user.muteState])
   return (
     <div className={user.className}>
       <div className="m-2 rounded-xl border border-gray-700 bg-gray-800 p-4 pb-2 pt-2">
