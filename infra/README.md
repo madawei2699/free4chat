@@ -44,6 +44,8 @@ When change server or upgrade server, that means ip will changed. We need to do 
 - [ ] Update `RTC1_HOST` and `RTC1_HOST` in GitHub `Actions secrets`.
 - [ ] Update DNS records.
 - [ ] Redeploy code to server.
+- [ ] Open the firewall IPV4/IPV6 protocols in server web console.
+- [ ] If server reboot, remember to config the iptables (80/443 -> 4000) in server.
 
 ### ~~Fly.io~~
 
