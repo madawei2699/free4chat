@@ -76,6 +76,7 @@ export default function UserCard(user: UserInfo) {
           <AudioVisualizer
             audio={user.audioStream}
             name={user.name}
+            muteState={user.muteState}
           ></AudioVisualizer>
         </div>
       </div>

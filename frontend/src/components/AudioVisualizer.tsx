@@ -5,13 +5,14 @@ import { nameToColor } from "../common/utils"
 interface Audio {
   audio: MediaStream
   name: string
+  muteState: boolean | false
 }
 
 export default function AudioVisualizer(props: Audio) {
   const analyserCanvas = useRef(null)
   const color = nameToColor(props.name)
   useEffect(() => {
-    if (props.audio === undefined) return
+    if (props.audio === undefined || props.muteState === true) return
     const audioCtx = new AudioContext()
     const analyser = audioCtx.createAnalyser()
     const audioSrc = audioCtx.createMediaStreamSource(props.audio)
@@ -60,7 +61,7 @@ export default function AudioVisualizer(props: Audio) {
       }
     }
     draw()
-  }, [props.audio, color])
+  }, [props.audio, color, props.muteState])
 
   return (
     <div className="visualizer mx-auto mt-4">
