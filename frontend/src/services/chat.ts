@@ -45,12 +45,12 @@ export class ChatService {
 
     this.webrtcChannel.onError((e) => {
       this.socketOff()
-      this.subject.error("on error!")
+      this.subject.error("on error, please refresh the page!")
     })
 
     this.webrtcChannel.onClose(() => {
       this.socketOff()
-      this.subject.error("on close!")
+      this.subject.error("on close, please refresh the page!")
     })
 
     this.webrtcSocketRefs.push(this.socket.onError(this.leave))
