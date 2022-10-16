@@ -61,7 +61,7 @@ export default function AudioVisualizer(props: Audio) {
       }
     }
     draw()
-  }, [props])
+  }, [props.audio, props.name])
 
   return (
     <div className="visualizer mx-auto mt-4">
