@@ -12,11 +12,12 @@ import {
   GET_API_SERVER_URL,
 } from "@common/consts"
 
-import { UserInfo } from "../common/types"
+import { UserInfo, Message } from "../common/types"
 
 export class ChatService {
   private room: string
   private participants: UserInfo[] = []
+  private messages: Message[] = []
 
   private localAudioStream: MediaStream | null = null
   private localAudioTrackIds: string[] = []
@@ -28,10 +29,12 @@ export class ChatService {
   private webrtcChannel
 
   private subject: Subject<UserInfo[]>
+  private messageSubject: Subject<Message[]>
 
-  constructor(roomName: string, subject) {
+  constructor(roomName: string, subject, messageSubject) {
     this.room = roomName
     this.subject = subject
+    this.messageSubject = messageSubject
     this.socket = new Socket(GET_API_SERVER_URL())
     this.socket.connect()
     if (!this.socket.isConnected) {
@@ -110,6 +113,19 @@ export class ChatService {
     this.webrtcChannel.on("mediaEvent", (event: any) => {
       this.webrtc.receiveMediaEvent(event.data)
     })
+
+    this.webrtcChannel.on("textEvent", (event: any) => {
+      const data = event.data
+      const userName = this.getNameByPeerId(data.peerId)
+      if (userName !== null) {
+        this.messages.push({
+          peerId: data.peerId,
+          name: userName,
+          text: data.text,
+        })
+        this.messageSubject.next([...this.messages])
+      }
+    })
   }
 
   public join = async (nickName: string) => {
@@ -148,6 +164,16 @@ export class ChatService {
     this.subject.next(this.participants)
   }
 
+  public sendTextMessage = (message: string) => {
+    this.webrtcChannel.push("textEvent", { data: message })
+    this.messages.push({
+      peerId: LOCAL_PEER_ID,
+      name: this.getSelf().name,
+      text: message,
+    })
+    this.messageSubject.next([...this.messages]) // deep copy the array to make react to re-render when array updates
+  }
+
   public muteSelf = () => {
     const me = this.getSelf()
     if (me === null) return
@@ -173,6 +199,11 @@ export class ChatService {
   private getSelf = () => {
     const findMe = this.participants.filter((p) => p.peerId === LOCAL_PEER_ID)
     return findMe.length > 0 ? findMe[0] : null
+  }
+
+  private getNameByPeerId = (peerId: string) => {
+    const findMe = this.participants.filter((p) => p.peerId === peerId)
+    return findMe.length > 0 ? findMe[0].name : null
   }
 
   private attachStream = (peerId: string, audio: MediaStream) => {

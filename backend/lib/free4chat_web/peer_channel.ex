@@ -54,6 +54,13 @@ defmodule Free4chatWeb.PeerChannel do
   end
 
   @impl true
+  def handle_in("textEvent", %{"data" => event}, socket) do
+    send(socket.assigns.room_pid, {:text_event, socket.assigns.peer_id, event})
+
+    {:noreply, socket}
+  end
+
+  @impl true
   def handle_info(
         {:DOWN, _ref, :process, _pid, _reason},
         socket
@@ -64,6 +71,13 @@ defmodule Free4chatWeb.PeerChannel do
   @impl true
   def handle_info({:media_event, event}, socket) do
     push(socket, "mediaEvent", %{data: event})
+
+    {:noreply, socket}
+  end
+
+  @impl true
+  def handle_info({:text_event, event}, socket) do
+    push(socket, "textEvent", %{data: event})
 
     {:noreply, socket}
   end

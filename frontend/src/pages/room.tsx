@@ -4,8 +4,9 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { Audio } from "react-loader-spinner"
 
-import { UserInfo } from "../common/types"
+import { UserInfo, Message } from "../common/types"
 import { randomName, saveRoomToLocalStorage } from "../common/utils"
+import TextChatCard from "../components/TextChatCard"
 import UserCard from "../components/UserCard"
 import Store from "../store/store"
 
@@ -17,6 +18,7 @@ export default function Room() {
   const [showNickNamePop, setShowNickNamePop] = useState<boolean>(false)
   const [errorMsg, setErrorMsg] = useState<any>("")
   const [participants, setParticipants] = useState<UserInfo[]>([])
+  const [messages, setMessages] = useState<Message[]>([])
 
   const dissmisNickNamePop = () => {
     setShowNickNamePop(false)
@@ -41,6 +43,7 @@ export default function Room() {
     if (roomName === "" || nickName === "" || showNickNamePop) return
     Store.init(roomName, nickName) // init chat room
     Store.subscribeParticipants(setParticipants, roomName) // use rxjs to subscribe chat room participants
+    Store.subscribeMessages(setMessages, roomName) // use rxjs to subscribe chat room text messages
     Store.subscribeError(setErrorMsg, roomName) // use rxjs to subscribe chat room error message
   }, [nickName, roomName, roomId, router, showNickNamePop])
 
@@ -166,6 +169,7 @@ export default function Room() {
                 />
               ))}
             </div>
+            <TextChatCard room={roomName} messages={messages}></TextChatCard>
           </div>
         </main>
       )}

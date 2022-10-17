@@ -185,6 +185,16 @@ defmodule Free4chat.Room do
   end
 
   @impl true
+  def handle_info({:text_event, from, event} = msg, state) do
+    for {peer_id, pid} <- state.peer_channels do
+      if peer_id != from do
+        send(pid, {:text_event, %{"peerId": from, "text": event}})
+      end
+    end
+    {:noreply, state}
+  end
+
+  @impl true
   def handle_info({:DOWN, _ref, :process, pid, _reason}, state) do
     if pid == state.rtc_engine do
       room_span_id(state.room_id)

@@ -13,8 +13,8 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 - **Common**
   - [x] Use [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to replace http protocol of JSON-RPC
 - **Room**
-  - [ ] Text chat, can sent text or emoji 🚩
-  - [ ] Can send arbitrary data by WebRTC datachannel
+  - [x] Text chat, can sent text or emoji
+  - [ ] Can send arbitrary data by WebRTC datachannel 🚩
   - [ ] Room permission setting, like public/private type setting
     - private room can't been seen on room discovery, and it needs password to enter. The password is [End-to-End Encryption](https://blog.excalidraw.com/end-to-end-encryption/), server only need check the answer which given by the client like the `PoW in blockchain`<sup>*</sup>
     - [ ] Public rooms discovery, like hot room list or filter rooms by type/tag

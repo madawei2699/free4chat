@@ -1,12 +1,13 @@
 import { Subject } from "rxjs"
 
-import { UserInfo } from "../common/types"
+import { UserInfo, Message } from "../common/types"
 import { ChatService } from "../services/chat"
 
 interface Room {
   name: string
   chat: ChatService
   subject: Subject<UserInfo[]>
+  messageSubject: Subject<Message[]>
 }
 
 interface State {
@@ -31,10 +32,12 @@ const store = {
     var room: Room
     if (findRoom === null) {
       const subject: Subject<UserInfo[]> = new Subject()
+      const messageSubject: Subject<Message[]> = new Subject()
       const newRoom: Room = {
         name: roomName,
-        chat: new ChatService(roomName, subject),
+        chat: new ChatService(roomName, subject, messageSubject),
         subject: subject,
+        messageSubject: messageSubject,
       }
       newRoom.chat.join(nickName)
       state.rooms.push(newRoom)
@@ -50,6 +53,14 @@ const store = {
     }
     room.subject.subscribe({ next: setParticipants })
   },
+  subscribeMessages: (setMessages, roomName: string) => {
+    if (roomName === "") return
+    const room = getRoom(roomName)
+    if (room === null) {
+      throw new Error("must init room firstly!")
+    }
+    room.messageSubject.subscribe({ next: setMessages })
+  },
   subscribeError: (setErrMsg, roomName: string) => {
     if (roomName === "") return
     const room = getRoom(roomName)
@@ -64,6 +75,13 @@ const store = {
       throw new Error("must init room firstly!")
     }
     room.chat.muteSelf()
+  },
+  sendTextMessage: (roomName: string, text: string) => {
+    const room = getRoom(roomName)
+    if (room === null) {
+      throw new Error("must init room firstly!")
+    }
+    room.chat.sendTextMessage(text)
   },
   resetStore: () => {
     state = initialState

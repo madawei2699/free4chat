@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 
-import { nameToColor } from "../common/utils"
+import { nameToColor, strToRGB } from "../common/utils"
 
 interface Audio {
   audio: MediaStream
@@ -36,7 +36,7 @@ export default function AudioVisualizer(props: Audio) {
       analyser.getByteFrequencyData(dataArray)
 
       // clear canvas for next drawing
-      canvasCtx.fillStyle = "rgb(31, 41, 55)"
+      canvasCtx.fillStyle = strToRGB(props.name)
       canvasCtx.fillRect(0, 0, WIDTH, HEIGHT)
 
       const barWidth = 4
@@ -46,14 +46,15 @@ export default function AudioVisualizer(props: Audio) {
       for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i] / 2
 
-        const r = Math.floor(barHeight + 64)
-        if (g % 3 === 0) {
-          canvasCtx.fillStyle = `rgb(${r},${g},${b})`
-        } else if (g % 3 === 1) {
-          canvasCtx.fillStyle = `rgb(${g},${r},${b})`
-        } else {
-          canvasCtx.fillStyle = `rgb(${g},${b},${r})`
-        }
+        // const r = Math.floor(barHeight + 64)
+        // if (g % 3 === 0) {
+        //   canvasCtx.fillStyle = `rgb(${r},${g},${b})`
+        // } else if (g % 3 === 1) {
+        //   canvasCtx.fillStyle = `rgb(${g},${r},${b})`
+        // } else {
+        //   canvasCtx.fillStyle = `rgb(${g},${b},${r})`
+        // }
+        canvasCtx.fillStyle = `rgb(255,255,255)`
 
         canvasCtx.fillRect(x, 40 - barHeight / 2, barWidth, barHeight)
 

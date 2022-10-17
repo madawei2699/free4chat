@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react"
 import Avatar from "boring-avatars"
 
 import { LOCAL_PEER_ID } from "@common/consts"
+import { strToBgColor } from "@common/utils"
 
 import { UserInfo } from "../common/types"
 import AudioVisualizer from "../components/AudioVisualizer"
@@ -20,7 +21,12 @@ export default function UserCard(user: UserInfo) {
   }, [user.audioStream])
   return (
     <div className={user.className}>
-      <div className="m-2 rounded-xl border border-gray-700 bg-gray-800 p-4 pb-2 pt-2">
+      <div
+        className="m-2 rounded-xl border border-gray-700 p-4 pb-2 pt-2"
+        style={{
+          backgroundColor: strToBgColor(user.name),
+        }}
+      >
         <div className="items-center">
           <div className="flex flex-row">
             <Avatar size={40} variant="beam" name={user.name} />

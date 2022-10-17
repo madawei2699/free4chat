@@ -6,3 +6,15 @@ export interface UserInfo {
   peerId: string
   muteState?: boolean | false
 }
+
+export interface Message {
+  peerId: string
+  name: string
+  text: string
+}
+
+export interface Color {
+  r: string
+  g: string
+  b: string
+}

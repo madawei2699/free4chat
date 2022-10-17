@@ -5,6 +5,8 @@ import {
   colors,
 } from "unique-names-generator"
 
+import { Color } from "@common/types"
+
 const customConfig: Config = {
   dictionaries: [adjectives, colors],
   separator: "-",
@@ -52,4 +54,34 @@ export const weightedRand = (spec) => {
   return function () {
     return table[Math.floor(Math.random() * table.length)]
   }
+}
+
+export const rgbToBgColor = (color: Color) => {
+  return (
+    "rgb(" +
+    color.r +
+    " " +
+    color.b +
+    " " +
+    color.g +
+    " / var(--tw-bg-opacity))"
+  )
+}
+
+export const strToBgColor = (str: string) => {
+  const color = nameToColor(str)
+  return (
+    "rgb(" +
+    color[0] +
+    " " +
+    color[1] +
+    " " +
+    color[2] +
+    " / var(--tw-bg-opacity))"
+  )
+}
+
+export const strToRGB = (str: string) => {
+  const color = nameToColor(str)
+  return "rgb(" + color[0] + "," + color[1] + "," + color[2] + ")"
 }
