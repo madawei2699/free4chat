@@ -21,15 +21,6 @@ printf '\nDocker installed successfully\n\n'
 sudo apt-get install docker-compose-plugin
 printf '\nDocker Compose installed successfully\n\n'
 
-# install Tailscale
-curl -fsSL https://tailscale.com/install.sh | sh
-
-echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
-echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p /etc/sysctl.conf
-
-sudo tailscale up --advertise-exit-node --ssh
-
 # config iptables
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 4000
 sudo iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 4000
