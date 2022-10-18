@@ -4,7 +4,7 @@
 
 It is designed by the [local first](https://www.inkandswitch.com/local-first/) and `privacy first` principle, and is very easy to use.
 
-> :warning: **This project is just using for technical test purpose, use at all your risk!** 
+> :warning: **This project is just using for technical test purpose, use at all your risk!**
 >
 > :warning: **There is freedom of speech, but I cannot guarantee freedom after speech.** (- Idi Amin)
 
@@ -19,23 +19,24 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
     - [ ] Persist text messages to browser localStorage
   - [ ] Can send arbitrary data by WebRTC datachannel 🚩
   - [ ] Room permission setting, like public/private type setting
-    - private room can't been seen on room discovery, and it needs password to enter. The password is [End-to-End Encryption](https://blog.excalidraw.com/end-to-end-encryption/), server only need check the answer which given by the client like the `PoW in blockchain`<sup>*</sup>
+    - private room can't been seen on room discovery, and it needs password to enter. The password is [End-to-End Encryption](https://blog.excalidraw.com/end-to-end-encryption/), server only need check the answer which given by the client like the `PoW` in blockchain.
     - [ ] Public rooms discovery, like hot room list or filter rooms by type/tag
-- **User**
-  - [ ] Robot user, like game robot who can play or facilitate game
-    - robot use [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) to play with user in room
-    - robot can play some voice games like language learning, technical interview, etc.
-      - [Gartic Phone - The Telephone Game](https://garticphone.com/lobby)
-      - [ESL Game - Not only practicing English speaking](https://esl.bmpi.dev/)
-      - [Gartic.io - Draw, Guess, WIN](https://gartic.io/)
+- **User**  
   - [ ] User real-time collaboration, like whiteboard, you draw I guess, etc.
     - [ ] Use [CRDT](https://crdt.tech/) to impelement real-time collaboration
       - https://github.com/liveblocks/liveblocks
       - https://github.com/derekkraan/delta_crdt_ex
     - [ ] Whiteboard
       - https://github.com/tldraw/tldraw
-  
+  - [ ] Robot user, like game robot who can play or facilitate game
+    - robot use [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) to play with user in room
+    - robot can play some voice games like language learning, technical interview, etc.
+      - [Gartic Phone - The Telephone Game](https://garticphone.com/lobby)
+      - [ESL Game - Not only practicing English speaking](https://esl.bmpi.dev/)
+      - [Gartic.io - Draw, Guess, WIN](https://gartic.io/)
+
 ## Architecture
+
 - **Tech Stack**
   - [x] Use Elixir/Phoenix to rewrite the backend code
   - [x] Use Recat/Next.js to rewrite the frontend code
@@ -51,9 +52,6 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
     - [ ] TURN enable TLS
   - [ ] Privacy enhancement.
   - [ ] IPV6 support.
-
-__NOTE__: 
-- `*` means it can be considered a VIP feature.
 
 ## Contribution
 
