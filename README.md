@@ -30,6 +30,8 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
     - [ ] Use [CRDT](https://crdt.tech/) to impelement real-time collaboration
       - https://github.com/liveblocks/liveblocks
       - https://github.com/derekkraan/delta_crdt_ex
+    - [ ] Whiteboard
+      - https://github.com/tldraw/tldraw
   
 ## Architecture
 - **Tech Stack**
