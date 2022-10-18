@@ -14,6 +14,7 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
   - [x] Use [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to replace http protocol of JSON-RPC
 - **Room**
   - [x] Text chat, can sent text or emoji
+    - [ ] Persist text messages to browser localStorage
   - [ ] Can send arbitrary data by WebRTC datachannel 🚩
   - [ ] Room permission setting, like public/private type setting
     - private room can't been seen on room discovery, and it needs password to enter. The password is [End-to-End Encryption](https://blog.excalidraw.com/end-to-end-encryption/), server only need check the answer which given by the client like the `PoW in blockchain`<sup>*</sup>
@@ -26,6 +27,9 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
       - [ESL Game - Not only practicing English speaking](https://esl.bmpi.dev/)
       - [Gartic.io - Draw, Guess, WIN](https://gartic.io/)
   - [ ] User real-time collaboration, like whiteboard, you draw I guess, etc.
+    - [ ] Use [CRDT](https://crdt.tech/) to impelement real-time collaboration
+      - https://github.com/liveblocks/liveblocks
+      - https://github.com/derekkraan/delta_crdt_ex
   
 ## Architecture
 - **Tech Stack**
