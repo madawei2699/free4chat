@@ -12,6 +12,8 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 
 - **Common**
   - [x] Use [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to replace http protocol of JSON-RPC
+  - Compatibility
+    - [ ] Make Safari(WebKit) compatibility better
 - **Room**
   - [x] Text chat, can sent text or emoji
     - [ ] Persist text messages to browser localStorage
