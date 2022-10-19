@@ -10,24 +10,21 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 
 ## Features
 
-- **Common**
-  - [x] Use [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to replace http protocol of JSON-RPC
-  - Compatibility
-    - [ ] Make Safari(WebKit) compatibility better
-- **Room**
+- **Real-time Communicating**
   - [x] Text chat, can sent text or emoji
     - [ ] Persist text messages to browser localStorage
   - [ ] Can send arbitrary data by WebRTC datachannel 🚩
   - [ ] Room permission setting, like public/private type setting
     - private room can't been seen on room discovery, and it needs password to enter. The password is [End-to-End Encryption](https://blog.excalidraw.com/end-to-end-encryption/), server only need check the answer which given by the client like the `PoW` in blockchain.
     - [ ] Public rooms discovery, like hot room list or filter rooms by type/tag
-- **User**  
+- **Real-time Collaborating**  
   - [ ] User real-time collaboration, like whiteboard, you draw I guess, etc.
     - [ ] Use [CRDT](https://crdt.tech/) to impelement real-time collaboration
       - https://github.com/liveblocks/liveblocks
       - https://github.com/derekkraan/delta_crdt_ex
     - [ ] Whiteboard
       - https://github.com/tldraw/tldraw
+- **Real-time Contesting**
   - [ ] Robot user, like game robot who can play or facilitate game
     - robot use [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) to play with user in room
     - robot can play some voice games like language learning, technical interview, etc.
@@ -37,9 +34,15 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 
 ## Architecture
 
+- **Common**
+  - [x] Use [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to replace http protocol of JSON-RPC
+  - Compatibility
+    - [ ] Make Safari(WebKit) compatibility better
+
 - **Tech Stack**
   - [x] Use Elixir/Phoenix to rewrite the backend code
   - [x] Use Recat/Next.js to rewrite the frontend code
+
 - **Infra**
   - [x] ~~Use docker to deploy to PaaS platform like [Railway](https://railway.app/) or [Fly](https://fly.io/)~~ 
   - [x] Use GitHub Actions + AWS Lightsail to deploy backend server
