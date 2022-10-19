@@ -11,7 +11,8 @@ It is designed by the [local first](https://www.inkandswitch.com/local-first/) a
 ## Features
 
 - **Real-time Communicating**
-  - [x] Text chat, can sent text or emoji
+  - [x] Voice chat in room
+  - [x] Text chat in room, can sent text or emoji
     - [ ] Persist text messages to browser localStorage
   - [ ] Can send arbitrary data by WebRTC datachannel 🚩
   - [ ] Room permission setting, like public/private type setting
