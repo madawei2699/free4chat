@@ -4,9 +4,11 @@
 
 It is designed by the [local first](https://www.inkandswitch.com/local-first/) and `privacy first` principle, and is very easy to use.
 
-> :warning: **This project is just using for technical test purpose, use at all your risk!**
->
-> :warning: **There is freedom of speech, but I cannot guarantee freedom after speech.** (- Idi Amin)
+> **Warning**
+> This project is just using for technical test purpose, use at all your risk!
+
+> **Warning**
+> **There is freedom of speech, but I cannot guarantee freedom after speech.** (- Idi Amin)
 
 ## Features
 
