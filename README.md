@@ -1,8 +1,6 @@
 # free4chat
 
-[free4.chat](https://free4.chat/) is a __real-time__ audio chat service.
-
-It is designed by the [local first](https://www.inkandswitch.com/local-first/) and `privacy first` principle, and is very easy to use.
+[free4.chat](https://free4.chat/) is a __real-time__ audio chat service. It is designed by the [local first](https://www.inkandswitch.com/local-first/) and `privacy first` principle, and is very easy to use.
 
 > :warning: **This project is just using for technical test purpose, use at all your risk!**
 >
