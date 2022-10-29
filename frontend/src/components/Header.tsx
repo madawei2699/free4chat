@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <div>
       <Head>
-        <title>Home - Free4Chat</title>
+        <title>Free for Chat - Free4Chat</title>
       </Head>
     </div>
   )

@@ -1,3 +1,5 @@
+@import 'typed';
+
 /* purgecss start ignore */
 @tailwind base;
 
@@ -20,4 +22,8 @@ html {
   canvas {
     margin: auto
   }
+}
+
+.slogan > h1 > span {
+  @include typed("Communicating 💬", "Collaborating 🛠", "Contesting ⚔️");
 }
