@@ -58,6 +58,9 @@
     - Frontend app use the client load balance strategy
     - [x] [TURN cluster scale](https://github.com/membraneframework/membrane_ice_plugin/issues/20)
       - Fix by start turn before the libcluster, still wait the upstream library to fix it normally
+    - [ ] Room process reblance, that means if the node where room in is offline, then the room process can rebalance to another node, the rebalance can use [Consistent hashing](https://en.wikipedia.org/wiki/Consistent_hashing) to implement
+      - For now, we just ignore this issue, because it can be resolved by reconnect another node and create the room again
+      - A complex approach is use [Riak Core](https://github.com/basho/riak_core) which implement the `Consistent hashing` and can rebalance the process by [VNode](https://www.erlang-factory.com/upload/presentations/294/MasterlessDistributedComputingwithRiakCore-RKlophaus.pdf)
   - [ ] Security enhancement, like coturn TLS setup, end-to-end encryption, etc.
     - [ ] TURN enable TLS
   - [ ] Privacy enhancement.
