@@ -24,13 +24,19 @@
     - [ ] Whiteboard
       - https://github.com/tldraw/tldraw
 - **Real-time Contesting**
-  - [ ] Robot user, like game robot who can play or facilitate game
+  - [ ] AI Robot user, like game robot who can play or facilitate game
     - robot use [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) to play with user in room
       - Azure [Text to speech](https://azure.microsoft.com/en-us/products/cognitive-services/text-to-speech/#overview) service.
     - robot can play some voice games like language learning, technical interview, etc.
       - [Gartic Phone - The Telephone Game](https://garticphone.com/lobby)
       - [ESL Game - Not only practicing English speaking](https://esl.bmpi.dev/)
       - [Gartic.io - Draw, Guess, WIN](https://gartic.io/)
+    - AI + Voice
+      - Deep learning models are changing the world
+        - [@midjourney](https://twitter.com/midjourney) can generate fatastic image from text
+        - [@GitHubCopilot](https://twitter.com/GitHubCopilot) can generate context-awared code from short code segment
+        - [@OpenAI](https://twitter.com/OpenAI) GPT-3 model can generate text paragraph from short sentence segment
+      - Voice conversation from text?
 
 ## Architecture
 
