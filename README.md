@@ -31,6 +31,7 @@
       - [Gartic Phone - The Telephone Game](https://garticphone.com/lobby)
       - [ESL Game - Not only practicing English speaking](https://esl.bmpi.dev/)
       - [Gartic.io - Draw, Guess, WIN](https://gartic.io/)
+      - [Get to know someone in 17 seconds](https://github.com/caydennn/seventeen-web-app)
     - AI + Voice
       - Deep learning models are changing the world
         - [@midjourney](https://twitter.com/midjourney) can generate fatastic image from text
@@ -75,3 +76,4 @@ If you are interested in `webRTC`, `peer-to-peer(P2P)`, `real-time collaboration
   - [Practice Speaking English Online Free - Language Practice Community](https://www.free4talk.com/)
   - [Agora Real-Time Voice and Video Engagement](https://www.agora.io/en/)
   - [An open network for secure, decentralized communication - Matrix](https://matrix.org/)
+  - [Introduction to Realtime Web Applications](https://realtime-apps-iap.github.io/)
