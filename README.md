@@ -61,6 +61,7 @@
     - [ ] Room process reblance, that means if the node where room in is offline, then the room process can rebalance to another node, the rebalance can use [Consistent hashing](https://en.wikipedia.org/wiki/Consistent_hashing) to implement
       - For now, we just ignore this issue, because it can be resolved by reconnect another node and create the room again
       - A complex approach is use [Riak Core](https://github.com/basho/riak_core) which implement the `Consistent hashing` and can rebalance the process by [VNode](https://www.erlang-factory.com/upload/presentations/294/MasterlessDistributedComputingwithRiakCore-RKlophaus.pdf)
+        - [NkDIST](https://github.com/NetComposer/nkdist), a Erlang distributed registration and load balancing lib which is base on `Riak Core`
       - [Tinode chat](https://github.com/tinode/chat) solve this issue by implementing the [Raft Consensus Algorithm](https://raft.github.io/)
         <details>
         <summary>More</summary>
