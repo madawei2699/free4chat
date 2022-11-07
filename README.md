@@ -21,6 +21,7 @@
     - [ ] Use [CRDT](https://crdt.tech/) to impelement real-time collaboration
       - https://github.com/liveblocks/liveblocks
       - https://github.com/derekkraan/delta_crdt_ex
+      - https://github.com/yjs/yjs
     - [ ] Whiteboard
       - https://github.com/tldraw/tldraw
 - **Real-time Contesting**
