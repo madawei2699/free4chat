@@ -19,8 +19,9 @@
 - **Real-time Collaborating**  
   - [ ] User real-time collaboration, like whiteboard, you draw I guess, etc.
     - [ ] Use [CRDT](https://crdt.tech/) to impelement real-time collaboration
-      - https://github.com/liveblocks/liveblocks
       - https://github.com/derekkraan/delta_crdt_ex
+      - https://github.com/electric-sql/vaxine
+      - https://github.com/liveblocks/liveblocks
       - https://github.com/yjs/yjs
     - [ ] Whiteboard
       - https://github.com/tldraw/tldraw
