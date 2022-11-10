@@ -20,6 +20,12 @@ export default hopeTheme({
 
   pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
 
+  navbarLayout: {
+    left: ["Brand"],
+    center: [],
+    right: ["Links", "Language", "Repo", "Outlook", "Search"],
+  },
+
   locales: {
     /**
      * Chinese locale config
