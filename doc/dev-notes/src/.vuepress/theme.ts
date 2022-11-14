@@ -10,7 +10,7 @@ export default hopeTheme({
     url: "https://bmpi.dev",
   },
 
-  iconAssets: "iconfont",
+  iconAssets: "fontawesome",
 
   repo: "madawei2699/free4chat",
 

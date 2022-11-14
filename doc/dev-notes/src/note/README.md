@@ -1,6 +1,6 @@
 ---
 title: 关于本手记
-icon: creative
+icon: lightbulb
 ---
 
 ## 功能亮点

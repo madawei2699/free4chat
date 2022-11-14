@@ -2,8 +2,8 @@ import { navbar } from "vuepress-theme-hope";
 
 export const zhNavbar = navbar([
     {
-        text: "Stats",
-        icon: "state",
+        text: "",
+        icon: "poo",
         link: "https://umami.bmpi.dev/share/ilNU9n5Z",
     },
 ]);

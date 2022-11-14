@@ -4,13 +4,13 @@ export const zhSidebar = sidebar({
   "/": [
     {
       text: "开发手记",
-      icon: "note",
+      icon: "screwdriver-wrench",
       prefix: "note/",
       children: "structure",
     },
     {
       text: "演讲稿",
-      icon: "slides",
+      icon: "video",
       prefix: "slide/",
       children: "structure",
     },
