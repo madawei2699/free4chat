@@ -34,6 +34,23 @@ class MyDocument extends Document {
             data-website-id="656d3289-e627-409c-a9d7-a272cf789f0b"
             src="https://umami.bmpi.dev/umami.js"
           ></script>
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=UA-217339264-1`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-217339264-1', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
         </Head>
         <body>
           <Main />
