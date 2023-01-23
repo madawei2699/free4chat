@@ -13,6 +13,7 @@ import {
 } from "@common/consts"
 
 import { UserInfo, Message } from "../common/types"
+import { gtagEvent } from "../common/utils"
 
 export class ChatService {
   private room: string
@@ -39,6 +40,7 @@ export class ChatService {
     this.socket.connect()
     if (!this.socket.isConnected) {
       this.subject.error("cannot connect server!")
+      gtagEvent("Room", roomName, "Server", "NotConnect") // send gtag event
       return
     }
     this.webrtcChannel = this.socket.channel(`room:` + roomName, {
@@ -48,11 +50,13 @@ export class ChatService {
     this.webrtcChannel.onError((e) => {
       this.socketOff()
       this.subject.error("on error, please refresh the page!")
+      gtagEvent("Room", roomName, "Socket", "OnError") // send gtag event
     })
 
     this.webrtcChannel.onClose(() => {
       this.socketOff()
       this.subject.error("on close, please refresh the page!")
+      gtagEvent("Room", roomName, "Socket", "OnClose") // send gtag event
     })
 
     this.webrtcSocketRefs.push(this.socket.onError(this.leave))
@@ -67,6 +71,7 @@ export class ChatService {
           this.subject.error(
             "Cannot connect to server, refresh the page and try again"
           )
+          gtagEvent("Room", roomName, "Server", "NotConnect") // send gtag event
         },
         onJoinSuccess: (_peerId, peersInRoom) => {
           this.localAudioStream?.getTracks().forEach((track) => {
@@ -136,6 +141,7 @@ export class ChatService {
       })
     } catch (error) {
       console.error("Error while getting local audio stream", error)
+      gtagEvent("Room", this.room, nickName, "NoAudioStream") // send gtag event
     }
     const localPeer: Peer = {
       id: LOCAL_PEER_ID,

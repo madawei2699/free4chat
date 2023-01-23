@@ -85,3 +85,15 @@ export const strToRGB = (str: string) => {
   const color = nameToColor(str)
   return "rgb(" + color[0] + "," + color[1] + "," + color[2] + ")"
 }
+
+export const gtagEvent = (action, category, label, value) => {
+  if (!Object.hasOwn(window, "gtag")) {
+    return
+  }
+  // @ts-ignore
+  window.gtag("event", action, {
+    event_category: category,
+    event_label: label,
+    value: value,
+  })
+}

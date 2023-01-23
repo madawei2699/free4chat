@@ -126,6 +126,10 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <p className="m-auto text-gray-600 sm:text-sm sm:leading-relaxed">
+          This website will collect some runtime techinical data for debugging,
+          using at your risk.
+        </p>
       </main>
     </div>
   )
