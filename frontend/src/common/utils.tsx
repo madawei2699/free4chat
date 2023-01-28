@@ -97,3 +97,11 @@ export const gtagEvent = (action, category, label, value) => {
     value: value,
   })
 }
+
+export const umamiEvent = (eventName, eventData) => {
+  if (!Object.hasOwn(window, "umami")) {
+    return
+  }
+  // @ts-ignore
+  window.umami.trackEvent(eventName, eventData)
+}

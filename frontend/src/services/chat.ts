@@ -13,7 +13,7 @@ import {
 } from "@common/consts"
 
 import { UserInfo, Message } from "../common/types"
-import { gtagEvent } from "../common/utils"
+import { gtagEvent, umamiEvent } from "../common/utils"
 
 export class ChatService {
   private room: string
@@ -41,6 +41,7 @@ export class ChatService {
     if (!this.socket.isConnected) {
       this.subject.error("cannot connect server!")
       gtagEvent("Room", roomName, "Server", "NotConnect") // send gtag event
+      umamiEvent("Room", { type: "Server", message: "NotConnect" }) // send umami event
       return
     }
     this.webrtcChannel = this.socket.channel(`room:` + roomName, {
@@ -51,12 +52,14 @@ export class ChatService {
       this.socketOff()
       this.subject.error("on error, please refresh the page!")
       gtagEvent("Room", roomName, "Socket", "OnError") // send gtag event
+      umamiEvent("Room", { type: "Socket", message: "OnError" }) // send umami event
     })
 
     this.webrtcChannel.onClose(() => {
       this.socketOff()
       this.subject.error("on close, please refresh the page!")
       gtagEvent("Room", roomName, "Socket", "OnClose") // send gtag event
+      umamiEvent("Room", { type: "Socket", message: "OnClose" }) // send umami event
     })
 
     this.webrtcSocketRefs.push(this.socket.onError(this.leave))
@@ -72,6 +75,7 @@ export class ChatService {
             "Cannot connect to server, refresh the page and try again"
           )
           gtagEvent("Room", roomName, "Server", "NotConnect") // send gtag event
+          umamiEvent("Room", { type: "Server", message: "NotConnect" }) // send umami event
         },
         onJoinSuccess: (_peerId, peersInRoom) => {
           this.localAudioStream?.getTracks().forEach((track) => {
@@ -142,6 +146,12 @@ export class ChatService {
     } catch (error) {
       console.error("Error while getting local audio stream", error)
       gtagEvent("Room", this.room, nickName, "NoAudioStream") // send gtag event
+      umamiEvent("Room", {
+        type: "Client",
+        message: "NoAudioStream",
+        user: nickName,
+        room: this.room,
+      }) // send umami event
     }
     const localPeer: Peer = {
       id: LOCAL_PEER_ID,
