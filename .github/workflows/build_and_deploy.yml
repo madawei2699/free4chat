@@ -82,25 +82,25 @@ jobs:
           stack_file_name: ./backend/docker-compose.yml
           args: -p rtc1 --env-file .env up -d --remove-orphans
 
-  deploy-rtc2:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:  
-      - uses: actions/checkout@v2
+  # deploy-rtc2:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:  
+  #     - uses: actions/checkout@v2
 
-      - name: Prepare .env file for the deployment
-        id: variables_population
-        run: printf "INTEGRATED_TURN_IP=$EXTERNAL_IP2 \nRELEASE_DISTRIBUTION=name \nRELEASE_NODE=$SNAME2@$PRIVATE_IP2 \nSECRET_KEY_BASE=$SECRET_KEY_BASE \nVIRTUAL_HOST=$VIRTUAL_HOST2 \nEXTERNAL_IP=$EXTERNAL_IP2 \nTAG=$TAG" > .env
+  #     - name: Prepare .env file for the deployment
+  #       id: variables_population
+  #       run: printf "INTEGRATED_TURN_IP=$EXTERNAL_IP2 \nRELEASE_DISTRIBUTION=name \nRELEASE_NODE=$SNAME2@$PRIVATE_IP2 \nSECRET_KEY_BASE=$SECRET_KEY_BASE \nVIRTUAL_HOST=$VIRTUAL_HOST2 \nEXTERNAL_IP=$EXTERNAL_IP2 \nTAG=$TAG" > .env
 
-      - name: Deploy docker compose to a pre-configured server
-        id: deploy
-        uses: TapTap21/docker-remote-deployment-action@v1.1
-        with:
-          remote_docker_host: ${{ secrets.RTC2_HOST }}
-          ssh_private_key: ${{ secrets.SSH_PRIV_KEY }}
-          ssh_public_key: ${{ secrets.SSH_PUB_KEY }}
-          docker_login_password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          docker_login_user: ${{ secrets.DOCKER_HUB_USERNAME }}
-          docker_login_registry : https://index.docker.io/v1/
-          stack_file_name: ./backend/docker-compose.yml
-          args: -p rtc2 --env-file .env up -d --remove-orphans
+  #     - name: Deploy docker compose to a pre-configured server
+  #       id: deploy
+  #       uses: TapTap21/docker-remote-deployment-action@v1.1
+  #       with:
+  #         remote_docker_host: ${{ secrets.RTC2_HOST }}
+  #         ssh_private_key: ${{ secrets.SSH_PRIV_KEY }}
+  #         ssh_public_key: ${{ secrets.SSH_PUB_KEY }}
+  #         docker_login_password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+  #         docker_login_user: ${{ secrets.DOCKER_HUB_USERNAME }}
+  #         docker_login_registry : https://index.docker.io/v1/
+  #         stack_file_name: ./backend/docker-compose.yml
+  #         args: -p rtc2 --env-file .env up -d --remove-orphans
