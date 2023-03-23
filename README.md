@@ -2,7 +2,7 @@
 
 [free4.chat](https://free4.chat/) is a __real-time__ audio chat service. It is designed by the [local first](https://www.inkandswitch.com/local-first/) and `privacy first` principle, and is very easy to use.
 
-> Anything you want to discuss, you can join me on this [slack channel](https://join.slack.com/t/bmpidev/shared_invite/zt-1regrk2ie-NiHipq2gflLrycWcmVG7XQ).
+> Anything you want to discuss, you can join me on this [slack channel](https://slack-redirect.i365.tech/).
 > 
 > :warning: **This project is just using for technical test purpose, use at all your risk!**
 >
