@@ -103,5 +103,5 @@ export const umamiEvent = (eventName, eventData) => {
     return
   }
   // @ts-ignore
-  window.umami.trackEvent(eventName, eventData)
+  window.umami.track(eventName, eventData)
 }

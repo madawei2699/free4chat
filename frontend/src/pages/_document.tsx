@@ -32,7 +32,7 @@ class MyDocument extends Document {
             async
             defer
             data-website-id="656d3289-e627-409c-a9d7-a272cf789f0b"
-            src="https://umami.bmpi.dev/umami.js"
+            src="https://umami.bmpi.dev/script.js"
           ></script>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
